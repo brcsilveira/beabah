@@ -1,0 +1,77 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 960px;
+    margin: 160px auto;
+    justify-items: center; /* Alinha os itens horizontalmente ao centro */
+    align-items: center;
+    gap: 16px;
+}
+
+.container .gridItem {
+    height: 208px;
+    /* max-width: 220px; */
+    width: 100%;
+    max-width: 228px;
+    max-height: 208px;
+    display: flex;
+    background: var(--card2);
+    justify-content: center; /* Alinha horizontalmente ao centro */
+    align-items: center; 
+    border-radius: 32px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .gridItem:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho do card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adiciona sombra para dar destaque */
+}
+
+span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--greenTitleAndViewProfiles);
+}
+
+.toast {
+    color: var(--greenTitleAndViewProfiles) !important;               /* Cor do texto */
+    font-size: 16px !important;           /* Tamanho da fonte */
+    border-radius: 16px !important;
+}
+
+.toastContainer {
+    margin-top: 6rem !important; /* Ajusta a posição superior */
+}
+
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(3, auto);
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .container .gridItem {
+        width: 120px;
+        height: 120px;
+        display: flex;
+        background: var(--card2); 
+        border-radius: 12px;
+    }
+    .container .gridItem span {
+        font-size: 1rem;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: (2, 1fr);
+        max-width: 200px;
+        justify-content: center;
+        gap: 8px;
+    }
+}

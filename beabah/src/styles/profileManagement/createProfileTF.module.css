@@ -1,0 +1,129 @@
+.container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    max-width: 960px;
+    margin: 50px auto;
+    padding-bottom: 25px;
+    border-radius: 32px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.container .formularios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario {
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white);
+    padding: 0 2rem 2rem 2rem;
+    max-width: 20rem;
+    margin: 60px 25px;
+    border-radius: 32px;
+    gap: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+.container .titulo {
+    color: var(--greenBackgroundLoginAndHeader);
+    font-size: 2rem;
+    font-weight: bold;
+    align-self: center; 
+    margin: 2rem 0 0 0;
+}
+
+.formulario h2 {
+    color: var(--greenTitleAndViewProfiles);
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 1rem 0 0 0;
+    text-align: center;
+    width: 100%;
+}
+
+.formulario h2::after {
+    content: '';
+    display: block;
+    width: 15rem; 
+    height: 1px;
+    background-color: var(--greenButtonAndIconAndToast); 
+    margin: 0 auto;
+    margin-top: 5px; /* Espaçamento entre o texto e a linha */
+}
+
+.formulario div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario div label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #005C24;
+    text-align: left;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.formulario div input {
+    margin-right: 0.6rem;
+}
+
+.container .criar {
+    width: 100%; /* Tornando o botão responsivo */
+    max-width: 300px; /* Definindo uma largura máxima para o botão */
+    padding: 10px;
+    margin: 0 auto; /* Centralizando o botão */
+    background-color: var(--greenButtonAndIconAndToast);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    grid-row: 3;
+}
+
+.criar:hover {
+    background-color: #0a6b32;
+}
+
+@media (max-width: 450px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        box-shadow: none;
+    }
+    .container .formularios {
+        display: flex;
+        flex-direction: column;
+    }
+    .container .formularios .formulario {
+        box-shadow: none;
+        max-width: 22rem;
+        margin: 0;
+    }
+    .container .formularios .formulario .opcoes label input {
+        font-size: 1.125rem;
+    }
+    .container .criar {
+        margin-top: 1rem;
+        width: 12rem;
+        font-size: 1.25rem;
+        padding: 1rem;
+    }
+    .container .titulo {
+        font-size: 1.5rem;
+        margin-top: 0px;
+        margin-bottom: 2rem;
+    }
+}
