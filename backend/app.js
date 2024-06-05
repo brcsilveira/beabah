@@ -35,6 +35,30 @@ app.post('/users', async (req, res) => {
     }
 });
 
+// Rota POST para criar um novo perfil
+app.post('/profiles', async (req, res) => {
+    try {
+        const { nome_perfil, descricao, id_transacao } = req.body;
+        const newProfile = await Perfil.create({ nome_perfil, descricao, id_transacao });
+        res.status(201).json(newProfile);
+    } catch (error) {
+        console.error('Erro ao criar perfil:', error);
+        res.status(500).json({ error: 'Erro ao criar perfil' });
+    }
+});
+
+// Rota POST para criar um novo modulo
+app.post('/modules', async (req, res) => {
+    try {
+        const { nome_modulo, descricao, id_funcao } = req.body;
+        const newModule = await Modulo.create({ nome_modulo, descricao, id_funcao });
+        res.status(201).json(newModule);
+    } catch (error) {
+        console.error('Erro ao criar modulo:', error);
+        res.status(500).json({ error: 'Erro ao criar modulo' });
+    }
+});
+
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {
     res.redirect('/register');

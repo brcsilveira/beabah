@@ -25,7 +25,7 @@ const Usuario = sequelize.define('usuario', {
     },
     id_perfil: {
         type: DataTypes.BIGINT,
-        allowNull: false // trocar no db
+        allowNull: true // Permite valores nulos (temporário)
     },
     codigo: {
         type: DataTypes.BIGINT,

@@ -20,7 +20,7 @@ const Perfil = sequelize.define('perfil', {
     },
     id_transacao: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true // Permite valores nulos (temporário)
     }
 }, {
     // Opções do modelo

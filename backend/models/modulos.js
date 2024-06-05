@@ -20,7 +20,7 @@ const Modulos = sequelize.define('modulos', {
     },
     id_funcao: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
     }
 }, {
     // Opções do modelo
