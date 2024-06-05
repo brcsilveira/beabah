@@ -1,11 +1,12 @@
 import styles from './Header.module.css';
 import queroqueroLogo from '../assets/qq-logo.svg';
 import maleUser from '../assets/maleUser.svg';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useParams } from 'react-router-dom';
 
 
 export function Header() {
     const location = useLocation();
+    const { profileName } = useParams();
 
     return (
         <>
@@ -25,7 +26,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/profileManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/profileManagement' || location.pathname === '/createProfiles' || location.pathname === '/createProfile' || location.pathname === '/createProfileTF'  || location.pathname === '/editProfiles' || location.pathname === '/selectProfiles' || location.pathname === '/deleteProfiles' || location.pathname === '/viewProfiles' ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/profileManagement' || location.pathname === '/createProfiles' || location.pathname === '/createProfile' || location.pathname.startsWith('/createProfileTF')  || location.pathname === '/editProfiles' || location.pathname === '/selectProfiles' || location.pathname === '/deleteProfiles' || location.pathname === '/viewProfiles' ? styles.active : ''}`}
                             >
                             Perfis
                             </Link>

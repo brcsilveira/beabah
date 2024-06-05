@@ -38,8 +38,8 @@ app.post('/users', async (req, res) => {
 // Rota POST para criar um novo perfil
 app.post('/profiles', async (req, res) => {
     try {
-        const { nome_perfil, descricao, id_transacao } = req.body;
-        const newProfile = await Perfil.create({ nome_perfil, descricao, id_transacao });
+        const { nome_perfil, id_transacao, funcoes } = req.body;
+        const newProfile = await Perfil.create({ nome_perfil, id_transacao, funcoes });
         res.status(201).json(newProfile);
     } catch (error) {
         console.error('Erro ao criar perfil:', error);

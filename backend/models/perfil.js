@@ -14,12 +14,12 @@ const Perfil = sequelize.define('perfil', {
         allowNull: false,
         unique: true
     },
-    descricao: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
     id_transacao: {
         type: DataTypes.BIGINT,
+        allowNull: true // Permite valores nulos (temporário)
+    },
+    funcoes: {
+        type: DataTypes.ARRAY(DataTypes.TEXT),
         allowNull: true // Permite valores nulos (temporário)
     }
 }, {
