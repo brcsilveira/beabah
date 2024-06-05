@@ -59,6 +59,18 @@ app.post('/modules', async (req, res) => {
     }
 });
 
+// Rota POST para criar uma nova função
+app.post('/functions', async (req, res) => {
+    try {
+        const { nome_funcao, descricao } = req.body;
+        const newFunction = await Funcao.create({ nome_funcao, descricao });
+        res.status(201).json(newFunction);
+    } catch (error) {
+        console.error('Erro ao criar função:', error);
+        res.status(500).json({ error: 'Erro ao criar função' });
+    }
+});
+
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {
     res.redirect('/register');
