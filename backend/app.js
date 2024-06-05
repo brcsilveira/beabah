@@ -71,6 +71,18 @@ app.post('/functions', async (req, res) => {
     }
 });
 
+// Rota POST para criar uma nova transação
+app.post('/transactions', async (req, res) => {
+    try {
+        const { nome_transacao, descricao, id_funcao } = req.body;
+        const newTransaction = await Transacao.create({ nome_transacao, descricao, id_funcao });
+        res.status(201).json(newTransaction);
+    } catch (error) {
+        console.error('Erro ao criar transação:', error);
+        res.status(500).json({ error: 'Erro ao criar transação' });
+    }
+});
+
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {
     res.redirect('/register');

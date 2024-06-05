@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Ajuste o caminho conforme necessário
 
-// Define o modelo 'Usuario'
+// Define o modelo 'Transacao'
 const Transacoes = sequelize.define('transacoes', {
     // Atributos do modelo
     id_transacao: {
@@ -20,7 +20,7 @@ const Transacoes = sequelize.define('transacoes', {
     },
     id_funcao: {
         type: DataTypes.BIGINT,
-        allowNull: false
+        allowNull: true
     }
 }, {
     // Opções do modelo

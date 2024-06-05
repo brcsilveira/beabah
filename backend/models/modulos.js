@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Ajuste o caminho conforme necessário
 
-// Define o modelo 'Usuario'
+// Define o modelo 'Modulo'
 const Modulos = sequelize.define('modulos', {
     // Atributos do modelo
     id_modulo: {
