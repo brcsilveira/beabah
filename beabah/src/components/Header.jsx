@@ -34,7 +34,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/moduleManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/moduleManagement' ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/moduleManagement' || location.pathname === '/createModule' || location.pathname === '/editModules' || location.pathname === '/viewModules' || location.pathname === '/deleteModules' ? styles.active : ''}`}
                             >
                             Módulos
                             </Link>

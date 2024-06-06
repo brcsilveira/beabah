@@ -55,7 +55,7 @@ export function CreateProfileTF () {
             // Verifica se a requisição foi bem sucedida
             if (response.ok) {
                  // Navega para a página desejada, por exemplo, a página de listagem de perfis
-                navigate('/profileManagement');
+                navigate('/profileManagement', { state: { message: 'Perfil criado!' } });
             } else {
                 console.error('Erro ao criar perfil:', response.statusText);
             }
