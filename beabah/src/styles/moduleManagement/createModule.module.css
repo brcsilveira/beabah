@@ -47,6 +47,22 @@
     align-self: flex-start;
 }
 
+.inputError {
+    border: 1px solid red;
+}
+
+.errorPlaceholder {
+    height: 20px; /* Altura reservada para a mensagem de erro */
+    margin: 0;
+    padding: 0;
+    color: transparent; /* Invisível por padrão */
+    transition: color 0.3s;
+}
+
+.errorVisible {
+    color: red; /* Mensagem de erro visível */
+}
+
 @media (max-width: 450px) {
     .formulario {
         margin-top: 6rem;

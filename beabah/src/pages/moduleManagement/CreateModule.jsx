@@ -33,16 +33,27 @@ export function CreateModule() {
             const data = {
                 nome_modulo: formData.nome,
                 descricao: formData.descricao
-            }
-            const response = await fetch('http://localhost:3000/modules', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+            };
+            
+            try {
+                const response = await fetch('http://localhost:3000/modules', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
                 
-            navigate('/moduleManagement', { state: { message: 'Módulo cadastrado!' } });
+                if (response.ok) {
+                    navigate('/moduleManagement', { state: { message: 'Módulo cadastrado!' } });
+                } else {
+                    console.error('Erro ao cadastrar módulo:', response.statusText);
+                    setErrors({ submit: 'Erro ao cadastrar módulo. Tente novamente mais tarde.' });
+                }
+            } catch (error) {
+                console.error('Erro ao cadastrar módulo:', error);
+                setErrors({ submit: 'Erro ao cadastrar módulo. Tente novamente mais tarde.' });
+            }
         } else {
             setErrors(validationErrors);
         }
@@ -60,14 +71,17 @@ export function CreateModule() {
 
     return (
         <main>
-            <form action="#" method="POST" className={styles.formulario}>
+            <form onSubmit={handleSubmit} className={styles.formulario}>
                 <h1 className={styles.titulo}>Criar Módulo</h1>
-                <input type="text" id="nome" name="nome" placeholder="Nome do Módulo" />
+                <input type="text" id="nome" name="nome" onChange={handleChange} placeholder="Nome do Módulo" className={errors.nome ? styles.inputError : ''} />
+                <p className={`${styles.errorPlaceholder} ${errors.nome ? styles.errorVisible : ''}`}>
+                    {errors.nome || ' '}
+                </p>{/* Espaço reservado para mensagem de erro */}
                 <div>
                     <h2 className={styles.descricao}>Descrição:</h2>
-                    <textarea name="descricao" id="descricao" placeholder="Opcional"></textarea>
+                    <textarea name="descricao" id="descricao" onChange={handleChange} placeholder="Opcional"></textarea>
                 </div>
-                <button>Criar</button>
+                <button type="submit">Criar</button>
             </form>
         </main>
     )

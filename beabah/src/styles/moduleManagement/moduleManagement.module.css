@@ -29,6 +29,17 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adiciona sombra para dar destaque */
 }
 
+.toast {
+    color: var(--greenTitleAndViewProfiles) !important;               /* Cor do texto */
+    font-size: 16px !important;           /* Tamanho da fonte */
+    border-radius: 16px !important;
+    word-break: keep-all;
+}
+
+.toastContainer {
+    margin-top: 6rem !important; /* Ajusta a posição superior */
+}
+
 span {
     font-size: 1.5rem;
     font-weight: bold;

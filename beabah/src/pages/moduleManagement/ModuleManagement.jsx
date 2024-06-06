@@ -22,6 +22,7 @@ export function ModuleManagement() {
             <Link to="/editModules" className={styles.gridItem}><span>Editar</span></Link>
             <Link to="/viewModules" className={styles.gridItem}><span>Visualizar</span></Link>
             <Link to="/deleteModules" className={styles.gridItem}><span>Remover</span></Link>
+            <ToastContainer className={styles.toastContainer} toastClassName={styles.toast}/>
         </div>
     )
 }
