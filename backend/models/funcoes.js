@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db'); // Ajuste o caminho conforme necessário
 
 // Define o modelo 'Funcao'
-const Funcoes = sequelize.define('funcoes', {
+const Funcao = sequelize.define('funcoes', {
     // Atributos do modelo
     id_funcao: {
         type: DataTypes.BIGINT,
@@ -17,6 +17,10 @@ const Funcoes = sequelize.define('funcoes', {
     descricao: {
         type: DataTypes.TEXT,
         allowNull: true
+    },
+    id_modulo: {
+        type: DataTypes.BIGINT,
+        allowNull: false
     }
 }, {
     // Opções do modelo
@@ -26,4 +30,4 @@ const Funcoes = sequelize.define('funcoes', {
 });
 
 // Exporta o modelo
-module.exports = Funcoes;
+module.exports = Funcao;

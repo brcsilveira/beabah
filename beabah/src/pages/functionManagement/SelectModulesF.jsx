@@ -6,12 +6,12 @@ export function SelectModulesF() {
         <div>
             <h1 className={styles.titulo}>Selecionar Módulo</h1>
             <div className={styles.container}>
-                <Link to="/createFunction/Cadastro" className={styles.gridItem}><span>Cadastro</span></Link>
-                <Link to="/createFunction/Digitalização" className={styles.gridItem}><span>Digitalização</span></Link>
-                <Link to="/createFunction/FichasVerdeCard" className={styles.gridItem}><span>Fichas VerdeCard</span></Link>
-                <Link to="/createFunction/VerdeCard" className={styles.gridItem}><span>VerdeCard</span></Link>
-                <Link to="/createFunction/LojistaAfiliado" className={styles.gridItem}><span>Lojista Afiliado</span></Link>
-                <Link to="/createFunction/Controle" className={styles.gridItem}><span>Controle</span></Link>
+                <Link to="/createFunction/CA" className={styles.gridItem}><span>Cadastro</span></Link>
+                <Link to="/createFunction/DG" className={styles.gridItem}><span>Digitalização</span></Link>
+                <Link to="/createFunction/FV" className={styles.gridItem}><span>Fichas VerdeCard</span></Link>
+                <Link to="/createFunction/SC" className={styles.gridItem}><span>VerdeCard</span></Link>
+                <Link to="/createFunction/VC" className={styles.gridItem}><span>Lojista Afiliado</span></Link>
+                <Link to="/createFunction/VG" className={styles.gridItem}><span>Controle</span></Link>
             </div>
         </div>
     );
