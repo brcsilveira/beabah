@@ -19,23 +19,17 @@
     margin: 2rem 0 1rem 0;
 }
 
-.formulario .nomeModulo {
-    color: var(--greenButtonAndIconAndToast);
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.formulario input{
+    width: 100%; /* Tornando os inputs responsivos */
+    max-width: 300px; /* Definindo uma largura máxima para os inputs */
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid var(--greenButtonAndIconAndToast);
     text-align: center;
-    width: 100%;
 }
 
-.formulario .nomeModulo::after {
-    content: '';
-    display: block;
-    width: 15rem; 
-    height: 1px;
-    background-color: var(--greenButtonAndIconAndToast); 
-    margin: 0 auto;
-    margin-top: 5px; /* Espaçamento entre o texto e a linha */
+.formulario input:focus {
+    outline: none; /* Remover o outline padrão no foco */
 }
 
 .formulario div {
@@ -48,8 +42,24 @@
     color: #005C24;
     font-size: 16px;
     font-weight: bold;
-    margin: 25px 0 10px 0;
+    margin: 15px 0 10px 0;
     align-self: flex-start;
+}
+
+.inputError {
+    border: 1px solid red;
+}
+
+.errorPlaceholder {
+    height: 20px; /* Altura reservada para a mensagem de erro */
+    margin: 0;
+    padding: 0;
+    color: transparent; /* Invisível por padrão */
+    transition: color 0.3s;
+}
+
+.errorVisible {
+    color: red; /* Mensagem de erro visível */
 }
 
 @media (max-width: 450px) {

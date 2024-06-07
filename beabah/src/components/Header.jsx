@@ -50,7 +50,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/transactionManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/transactionManagement' ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/transactionManagement' || location.pathname === '/createTransaction' ? styles.active : ''}`}
                             >
                             Transações
                             </Link>

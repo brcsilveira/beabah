@@ -104,8 +104,8 @@ app.post('/functions', async (req, res) => {
 // Rota POST para criar uma nova transação
 app.post('/transactions', async (req, res) => {
     try {
-        const { nome_transacao, descricao, id_funcao } = req.body;
-        const newTransaction = await Transacao.create({ nome_transacao, descricao, id_funcao });
+        const { nome_transacao, descricao } = req.body;
+        const newTransaction = await Transacao.create({ nome_transacao, descricao });
         res.status(201).json(newTransaction);
     } catch (error) {
         console.error('Erro ao criar transação:', error);

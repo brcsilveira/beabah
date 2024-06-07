@@ -48,11 +48,11 @@ export function CreateModule() {
                     navigate('/moduleManagement', { state: { message: 'Módulo cadastrado!' } });
                 } else {
                     console.error('Erro ao cadastrar módulo:', response.statusText);
-                    setErrors({ submit: 'Erro ao cadastrar módulo. Tente novamente mais tarde.' });
+                    setErrors({ submit: 'Erro ao cadastrar módulo.' });
                 }
             } catch (error) {
                 console.error('Erro ao cadastrar módulo:', error);
-                setErrors({ submit: 'Erro ao cadastrar módulo. Tente novamente mais tarde.' });
+                setErrors({ submit: 'Erro ao cadastrar módulo.' });
             }
         } else {
             setErrors(validationErrors);

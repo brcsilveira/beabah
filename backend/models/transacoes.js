@@ -17,10 +17,6 @@ const Transacoes = sequelize.define('transacoes', {
     descricao: {
         type: DataTypes.TEXT,
         allowNull: true
-    },
-    id_funcao: {
-        type: DataTypes.BIGINT,
-        allowNull: true
     }
 }, {
     // Opções do modelo

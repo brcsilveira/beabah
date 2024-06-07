@@ -1,14 +1,29 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styles from '../../styles/transactionManagement/transactionManagement.module.css'
+import { useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function TransactionManagement() {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state?.message) {
+            toast.success(location.state.message, {
+              className: styles.toast,
+              position: 'top-right'
+            });
+        }
+    }, [location.state]);
+
     return (
         <div className={styles.container}>
-            <div className={styles.gridItem}><span>Atribuir</span></div>
-            <div className={styles.gridItem}><span>Editar</span></div>
-            <div className={styles.gridItem}><span>Criar</span></div>
-            <div className={styles.gridItem}><span>Remover</span></div>
-            <div className={styles.gridItem}><span>Visualizar</span></div>
+            <Link  className={styles.gridItem}><span>Atribuir</span></Link >
+            <Link  className={styles.gridItem}><span>Editar</span></Link >
+            <Link to='/createTransaction' className={styles.gridItem}><span>Criar</span></Link >
+            <Link  className={styles.gridItem}><span>Remover</span></Link >
+            <Link  className={styles.gridItem}><span>Visualizar</span></Link >
+            <ToastContainer className={styles.toastContainer} toastClassName={styles.toast}/>
         </div>
     )
 }
