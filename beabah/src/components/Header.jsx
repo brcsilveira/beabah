@@ -42,7 +42,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/functionManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/functionManagement' ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/functionManagement' || location.pathname === '/selectModulesF' || location.pathname.startsWith('/createFunction') || location.pathname === '/deleteFunctions' || location.pathname === '/editFunction' || location.pathname === '/editFunctions' || location.pathname === '/viewFunctions' ? styles.active : ''}`}
                             >
                             Funções
                             </Link>

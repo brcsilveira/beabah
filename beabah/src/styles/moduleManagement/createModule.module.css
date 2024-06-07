@@ -23,7 +23,6 @@
     width: 100%; /* Tornando os inputs responsivos */
     max-width: 300px; /* Definindo uma largura máxima para os inputs */
     padding: 10px;
-    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid var(--greenButtonAndIconAndToast);
     text-align: center;
@@ -43,7 +42,7 @@
     color: #005C24;
     font-size: 16px;
     font-weight: bold;
-    margin: 25px 0 10px 0;
+    margin: 15px 0 10px 0;
     align-self: flex-start;
 }
 

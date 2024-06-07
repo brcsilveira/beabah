@@ -35,7 +35,8 @@ import { EditModules } from './moduleManagement/EditModules'
 import { DeleteModules } from './moduleManagement/DeleteModules'
 import { ViewModules } from './moduleManagement/ViewModules'
 import { TransactionManagement } from './transactionManagement/TransactionManagement'
-import { SelectModules } from './transactionManagement/SelectModules'
+import { SelectModulesT } from './transactionManagement/SelectModulesT'
+import { SelectModulesF } from './functionManagement/SelectModulesF'
 import { EditTransactions } from './transactionManagement/EditTransactions'
 import { DeleteTransactions } from './transactionManagement/DeleteTransactions'
 import { ViewTransactions } from './transactionManagement/ViewTransactions'
@@ -63,7 +64,6 @@ function Router() {
           <Route path="/selectTransactions" element={<SelectTransactions />} />
           <Route path="/editTransaction" element={<EditTransaction />} />
           <Route path="/createTransaction" element={<CreateTransaction />} />
-          <Route path="/createFunction" element={<CreateFunction />} />
           <Route path="/editFunction" element={<EditFunction />} />
           <Route path="/linkAlterProfiles" element={<LinkAlterProfiles />} />
           <Route path="/editUsers" element={<EditUsers />} />
@@ -81,7 +81,8 @@ function Router() {
           <Route path="/deleteModules" element={<DeleteModules />} />
           <Route path="/viewModules" element={<ViewModules />} />
           <Route path="/transactionManagement" element={<TransactionManagement />} />
-          <Route path="/selectModules" element={<SelectModules />} />
+          <Route path="/selectModulesT" element={<SelectModulesT />} />
+          <Route path="/selectModulesF" element={<SelectModulesF />} />
           <Route path="/editTransactions" element={<EditTransactions />} />
           <Route path="/deleteTransactions" element={<DeleteTransactions />} />
           <Route path="/viewTransactions" element={<ViewTransactions />} />
@@ -90,6 +91,7 @@ function Router() {
           <Route path="/editFunctions" element={<EditFunctions />} />    
           <Route path="/deleteFunctions" element={<DeleteFunctions />} />      
           <Route path="/viewFunctions" element={<ViewFunctions />} /> 
+          <Route path="/createFunction/:moduleName" element={<CreateFunction />} />
         </Route>
         <Route element={<ContainerNotLogged />}>
           <Route path="/registerNewPassword" element={<RegisterNewPassword />} />

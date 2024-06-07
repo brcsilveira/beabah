@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import styles from '../../styles/transactionManagement/selectModules.module.css'
+import styles from '../../styles/transactionManagement/selectModulesT.module.css'
 
-export function SelectModules() {
+export function SelectModulesT() {
     return (
         <div>
             <h1 className={styles.titulo}>Selecionar Módulo</h1>

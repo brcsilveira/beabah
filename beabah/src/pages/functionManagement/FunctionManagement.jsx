@@ -4,10 +4,10 @@ import styles from '../../styles/functionManagement/functionManagement.module.cs
 export function FunctionManagement() {
     return (
         <div className={styles.container}>
-            <div className={styles.gridItem}><span>Criar</span></div>
-            <div className={styles.gridItem}><span>Editar</span></div>
-            <div className={styles.gridItem}><span>Visualizar</span></div>
-            <div className={styles.gridItem}><span>Remover</span></div>
+            <Link to="/selectModulesF" className={styles.gridItem}><span>Criar</span></Link>
+            <Link to="/editFunctions" className={styles.gridItem}><span>Editar</span></Link>
+            <Link to="/viewFunctions" className={styles.gridItem}><span>Visualizar</span></Link>
+            <Link to="/deleteFunctions" className={styles.gridItem}><span>Remover</span></Link>
         </div>
     )
 }
