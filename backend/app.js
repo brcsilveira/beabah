@@ -35,6 +35,24 @@ app.post('/users', async (req, res) => {
     }
 });
 
+// Rota DELETE para deletar um usuário
+app.delete('/users/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await Usuario.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+        }
+
+        await user.destroy();
+        res.status(204).end();
+    } catch (error) {
+        console.error('Erro ao deletar usuário:', error);
+        res.status(500).json({ error: 'Erro ao deletar usuário' });
+    }
+});
+
 // Rota POST para criar um novo perfil
 app.post('/profiles', async (req, res) => {
     try {
