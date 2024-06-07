@@ -53,7 +53,7 @@ function Router() {
         <Route element={<Header />}>
           <Route path="/userManagement" element={<UserManagement />} />
           <Route path="/registerUser" element={<RegisterUser />} />
-          <Route path="/editUser" element={<EditUser />} />
+          <Route path="/editUser/:userId" element={<EditUser />} />
           <Route path="/linkProfile" element={<LinkProfile />} />
           <Route path="/changeProfileLink" element={<ChangeProfileLink />} />
           <Route path="/createProfile" element={<CreateProfile />} />

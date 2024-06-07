@@ -53,6 +53,17 @@ app.delete('/users/:id', async (req, res) => {
     }
 });
 
+// Rota GET para obter todos os usuários
+app.get('/users', async (req, res) => {
+    try {
+        const users = await Usuario.findAll();
+        res.status(200).json(users);
+    } catch (error) {
+        console.error('Erro ao buscar usuários:', error);
+        res.status(500).json({ error: 'Erro ao buscar usuários' });
+    }
+});
+
 // Rota POST para criar um novo perfil
 app.post('/profiles', async (req, res) => {
     try {
