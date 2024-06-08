@@ -1,11 +1,13 @@
 import styles from "../../styles/userManagement/deleteUsers.module.css"
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ModalUser } from "./ModalUser";
 
 export function DeleteUsers() {
     const [users, setUsers] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -40,6 +42,7 @@ export function DeleteUsers() {
             if (response.ok) {
                 setUsers(users.filter(user => user.id_usuario !== selectedUser.id_usuario));
                 closeModal();
+                navigate('/userManagement', { state: { message: 'Usuário excluído!' } });
             } else {
                 console.error('Erro ao excluir usuário');
             }
