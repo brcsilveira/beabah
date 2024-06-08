@@ -25,7 +25,7 @@ export function UserManagement() {
           <Link to="/editUsers" className={styles.gridItem}>
             <span>Editar</span>
           </Link>
-          <Link to="/linkProfiles" className={styles.gridItem}>
+          <Link to="/selectUsers" className={styles.gridItem}>
             <span>Vincular</span>
           </Link>
           <Link to="/deleteUsers" className={styles.gridItem}>
