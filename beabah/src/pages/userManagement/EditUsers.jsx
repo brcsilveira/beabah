@@ -2,6 +2,8 @@ import styles from "../../styles/userManagement/editUsers.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Adicionar um serach para muito usuários
+
 export function EditUsers() {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
