@@ -18,7 +18,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/userManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/userManagement' || location.pathname === '/registerUser' || location.pathname === '/editUsers' || location.pathname.startsWith('/editUser') || location.pathname === '/linkProfiles' || location.pathname === '/deleteUsers' || location.pathname === '/viewUsers' || location.pathname === '/selectUsers' ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/userManagement' || location.pathname === '/registerUser' || location.pathname === '/editUsers' || location.pathname.startsWith('/editUser') || location.pathname === '/deleteUsers' || location.pathname === '/viewUsers' || location.pathname === '/selectUsers' || location.pathname.startsWith('/linkProfile')  ? styles.active : ''}`}
                             >
                             Usuários
                             </Link>

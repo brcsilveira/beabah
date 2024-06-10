@@ -23,7 +23,7 @@ export function SelectUsers() {
     }, []);
 
     const handleSelect = (userId) => {
-        navigate(`/LinkProfiles/${userId}`);
+        navigate(`/linkProfiles/${userId}`);
     }
 
     return (

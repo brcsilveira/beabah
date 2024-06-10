@@ -11,6 +11,9 @@ export function LinkProfiles() {
         const fetchUser = async () => {
             try {
                 const response = await fetch(`http://localhost:3000/users/${userId}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
                 const data = await response.json();
                 setUser(data);
             } catch (error) {
@@ -27,9 +30,9 @@ export function LinkProfiles() {
 
     return (
         <div>
-            {user && <h1 className={styles.titulo}>Vincular ou Alterar {user.nome_usuario}</h1>}
+            {user && <h1 className={styles.titulo}>{user.nome_usuario}</h1>}
             <div className={styles.container}>
-                <Link to='/linkProfile' className={styles.gridItem}><span>Vincular</span></Link>
+                <Link to={`/linkProfile/${userId}`} className={styles.gridItem}><span>Vincular</span></Link>
                 <Link className={styles.gridItem}><span>Alterar</span></Link>
             </div>
         </div>

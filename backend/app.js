@@ -64,6 +64,44 @@ app.get('/users', async (req, res) => {
     }
 });
 
+// Rota GET para obter um usuário pelo ID
+app.get('/users/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await Usuario.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+        }
+
+        res.status(200).json(user);
+    } catch (error) {
+        console.error('Erro ao buscar usuário:', error);
+        res.status(500).json({ error: 'Erro ao buscar usuário' });
+    }
+});
+
+// Rota PUT para atualizar o perfil de um usuário
+app.put('/users/:id/profile', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { id_perfil } = req.body;
+        const user = await Usuario.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+        }
+
+        user.id_perfil = id_perfil;
+        await user.save();
+        res.status(204).end();
+    } catch (error) {
+        console.error('Erro ao atualizar perfil do usuário:', error);
+        res.status(500).json({ error: 'Erro ao atualizar perfil do usuário' });
+    }
+});
+
+
 // Rota POST para criar um novo perfil
 app.post('/profiles', async (req, res) => {
     try {
