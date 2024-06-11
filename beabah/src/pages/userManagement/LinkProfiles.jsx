@@ -6,6 +6,7 @@ export function LinkProfiles() {
     const { userId } = useParams();
     const [ user, setUser ] = useState({});
     const [ error, setError ] = useState(null);
+    const [ linkedProfiles, setLinkedProfiles ] = useState(false);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -16,6 +17,10 @@ export function LinkProfiles() {
                 }
                 const data = await response.json();
                 setUser(data);
+
+                if (data.id_perfil) {
+                    setLinkedProfiles(true);
+                }
             } catch (error) {
                 setError('Erro ao buscar usuário');
             }
@@ -32,8 +37,9 @@ export function LinkProfiles() {
         <div>
             {user && <h1 className={styles.titulo}>{user.nome_usuario}</h1>}
             <div className={styles.container}>
-                <Link to={`/linkProfile/${userId}`} className={styles.gridItem}><span>Vincular</span></Link>
-                <Link className={styles.gridItem}><span>Alterar</span></Link>
+                <Link to={`/linkProfile/${userId}`} className={styles.gridItem}>
+                    <span>{linkedProfiles ? 'Alterar' : 'Vincular'}</span>
+                </Link>
             </div>
         </div>
     )

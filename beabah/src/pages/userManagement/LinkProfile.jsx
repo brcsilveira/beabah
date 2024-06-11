@@ -18,6 +18,7 @@ export function LinkProfile() {
                 }
                 const data = await response.json();
                 setUser(data);
+                setSelectedProfile(data.id_perfil || '');
             } catch (error) {
                 setError('Erro ao buscar usuário');
             }
@@ -59,19 +60,21 @@ export function LinkProfile() {
         return <div>{error}</div>
     }
 
+    const isUpdating = !!user.id_perfil;
+
     return (
         <main>
             <form onSubmit={handleSubmit} className={styles.formulario}>
-                <h1 className={styles.titulo}>Vincular</h1>
+                <h1 className={styles.titulo}>{isUpdating ? 'Alterar Vínculo' : 'Vincular'}</h1>
                 <h2 className={styles.nomeUsuario}>{user.nome_usuario}</h2>
                 <div className={styles.opcoes}>
-                    <label htmlFor="admin"><input type="radio" id='admin' name='perfil' value="1" onChange={handleProfileChange}/> Administrador</label>
-                    <label htmlFor="comum"><input type="radio" id='comum' name='perfil' value="2" onChange={handleProfileChange}/> Comum</label>
-                    <label htmlFor="caixaVC"><input type="radio" id='caixaVC' name='perfil' value="3" onChange={handleProfileChange}/> Caixa VC</label>
-                    <label htmlFor="estabelecimento"><input type="radio" id='estabelecimento' name='perfil' value="5" onChange={handleProfileChange}/> Estabelecimento</label>
-                    <label htmlFor="gestor"><input type="radio" id='gestor' name='perfil' value="6" onChange={handleProfileChange}/> Gestor</label>
+                    <label htmlFor="admin"><input type="radio" id='admin' name='perfil' value="1" checked={selectedProfile === '1'} onChange={handleProfileChange}/> Administrador</label>
+                    <label htmlFor="comum"><input type="radio" id='comum' name='perfil' value="2" checked={selectedProfile === '2'} onChange={handleProfileChange}/> Comum</label>
+                    <label htmlFor="caixaVC"><input type="radio" id='caixaVC' name='perfil' value="3" checked={selectedProfile === '3'} onChange={handleProfileChange}/> Caixa VC</label>
+                    <label htmlFor="estabelecimento"><input type="radio" id='estabelecimento' name='perfil' value="4" checked={selectedProfile === '4'} onChange={handleProfileChange}/> Estabelecimento</label>
+                    <label htmlFor="gestor"><input type="radio" id='gestor' name='perfil' value="5" checked={selectedProfile === '5'} onChange={handleProfileChange}/> Gestor</label>
                 </div>
-                <button className={styles.vincular}>Vincular</button>
+                <button className={styles.vincular}>{isUpdating ? 'Atualizar' : 'Vincular'}</button>
             </form>
         </main>
     )

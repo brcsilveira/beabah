@@ -58,6 +58,28 @@ exports.getUserById = async (req, res) => {
     }
 };
 
+//Rota PUT para atualizar um usuário
+exports.updateUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nome_usuario, email, senha } = req.body;
+        const user = await Usuario.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+        }
+
+        user.nome_usuario = nome_usuario;
+        user.email = email;
+        user.senha = senha;
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        console.error('Erro ao atualizar usuário:', error);
+        res.status(500).json({ error: 'Erro ao atualizar usuário' });
+    }
+};
+
 // Rota PUT para atualizar o perfil de um usuário
 exports.updateProfile = async (req, res) => {
     try {

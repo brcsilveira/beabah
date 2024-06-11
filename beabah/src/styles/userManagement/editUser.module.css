@@ -7,7 +7,7 @@
     max-width: 20rem;
     margin: 50px auto;
     border-radius: 32px;
-    gap: 3rem;
+    gap: 2.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
@@ -17,6 +17,25 @@
     font-weight: bold;
     align-self: center; 
     margin: 2rem 0 0 0;
+}
+
+.formulario .nomeUsuario {
+    color: var(--greenButtonAndIconAndToast);
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.formulario .nomeUsuario::after {
+    content: '';
+    display: block;
+    width: 15rem; 
+    height: 1px;
+    background-color: var(--greenButtonAndIconAndToast); 
+    margin: 0 auto;
+    margin-top: 5px; /* Espaçamento entre o texto e a linha */
 }
 
 .formulario div input{
@@ -49,6 +68,16 @@
 .formulario button:hover {
     background-color: #0a6b32;
 }
+
+.errorPlaceholder {
+    min-height: 0.5em; /* Ajuste essa altura conforme necessário */
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+    text-align: center;
+  }
 
 @media (max-width: 450px) {
     .formulario {

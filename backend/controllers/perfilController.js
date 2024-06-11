@@ -11,3 +11,18 @@ exports.createProfile = async (req, res) => {
         res.status(500).json({ error: 'Erro ao criar perfil' });
     }
 };
+
+// Rota GET para obter os detalhes de um perfil pelo ID
+exports.getProfileById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const perfil = await Perfil.findByPk(id);
+        if (!perfil) {
+            return res.status(404).json({ error: 'Perfil não encontrado' });
+        }
+        res.status(200).json(perfil);
+    } catch (error) {
+        console.error('Erro ao obter perfil:', error);
+        res.status(500).json({ error: 'Erro ao obter perfil' });
+    }
+};

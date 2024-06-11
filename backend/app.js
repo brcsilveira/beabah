@@ -38,6 +38,8 @@ app.delete('/users/:id', usuarioController.deleteUser);
 app.get('/users', usuarioController.getUsers);
 // Rota GET para obter um usuário pelo ID
 app.get('/users/:id', usuarioController.getUserById);
+// Rota PUT para atualizar um usuário
+app.put('/users/:id', usuarioController.updateUser);
 // Rota PUT para atualizar o perfil de um usuário
 app.put('/users/:id/profile', usuarioController.updateProfile);
 
@@ -45,7 +47,8 @@ app.put('/users/:id/profile', usuarioController.updateProfile);
 //Perfil:
 // Rota POST para criar um novo perfil
 app.post('/profiles', perfilController.createProfile);
-
+// Rota GET para obter os detalhes de um perfil pelo ID
+app.get('/profiles/:id', perfilController.getProfileById);
 
 //Modulo:
 // Rota POST para criar um novo modulo

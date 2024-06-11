@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export function ViewUsers() {
     const [users, setUsers] = useState([]);
+    const [profiles, setProfiles] = useState({});
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -10,6 +11,14 @@ export function ViewUsers() {
                 const response = await fetch('http://localhost:3000/users');
                 const data = await response.json();
                 setUsers(data);
+
+                const profileIds = data.map(user => user.id_perfil);
+                const profilesData =await Promise.all(profileIds.map(id => fetchProfile(id)));
+                const profilesMap = {};
+                profilesData.forEach(profile => {
+                    profilesMap[profile.id_perfil] = profile.nome_perfil;
+                });
+                setProfiles(profilesMap);
             } catch (error) {
                 console.error('Erro ao buscar usuários:', error);
             }
@@ -18,14 +27,27 @@ export function ViewUsers() {
         fetchUsers();
     }, []);
 
+    // Função para buscar detalhes do perfil pelo ID
+    const fetchProfile = async (profileId) => {
+        const response = await fetch(`http://localhost:3000/profiles/${profileId}`);
+        const data = await response.json();
+        return data;
+    };
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Visualizar Usuários</h1>
+            <div className={styles.titulosLista}>
+                <span className={styles.userDetailTitle}>Nome</span>
+                <span className={styles.userDetailTitle}>Email</span>
+                <span className={styles.userDetailTitle}>Perfil</span>
+            </div>
             <ul className={styles.listaUsuarios}>
                 {users.map(user => (
                     <li key={user.id_usuario}>
                     <span className={styles.userName}>{user.nome_usuario}</span>
                     <span className={styles.userEmail}>{user.email}</span>
+                    <span className={styles.userId}>{profiles[user.id_perfil]}</span>
                     </li>
                 ))}
             </ul>

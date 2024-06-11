@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     max-width: 960px;
     margin: 80px auto;
     justify-content: center;
@@ -12,6 +13,21 @@
     color: var(--greenTitleAndViewProfiles);
     margin-top: 0;
     margin-bottom: 4rem;
+}
+
+.titulosLista {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+}
+
+.titulosLista .userDetailTitle {
+    text-align: center;
+    color: var(--greenTitleAndViewProfiles);
+    font-size: 1.3rem;
 }
 
 .listaUsuarios {
@@ -27,7 +43,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     justify-content: space-between;
     transition: background-color 0.3s;
@@ -38,7 +54,8 @@
 }
 
 .listaUsuarios li .userName,
-.listaUsuarios li .userEmail {
+.listaUsuarios li .userEmail,
+.listaUsuarios li .userId {
     font-size: 1.2rem;
     color: var(--greenForgotPassword);
     text-align: center;
