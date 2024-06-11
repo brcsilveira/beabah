@@ -1,14 +1,20 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const Usuario = require('./models/usuarios'); // Corrigido para importar corretamente
-const Funcao = require('./models/funcoes');
-const Modulo = require('./models/modulos');
-const Perfil = require('./models/perfil');
-const Transacao = require('./models/transacoes');
+const cors = require('cors');
+// const Usuario = require('./models/usuarios'); // Corrigido para importar corretamente
+// const Funcao = require('./models/funcoes');
+// const Modulo = require('./models/modulos');
+// const Perfil = require('./models/perfil');
+// const Transacao = require('./models/transacoes');
+const usuarioController = require('./controllers/usuarioController');
+const perfilController = require('./controllers/perfilController');
+const moduloController = require('./controllers/moduloController');
+const funcaoController = require('./controllers/funcaoController');
+const transacaoController = require('./controllers/transacaoController');
 const app = express();
 const PORT = 3000;
-const cors = require('cors');
+
 
 app.use(cors({ origin: '*' })); // Feito pra acessar de qualquer lugar
 
@@ -23,129 +29,32 @@ app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'register.html'));
 });
 
+//Usuário:
 // Rota POST para criar um novo usuário
-app.post('/users', async (req, res) => {
-    try {
-        const { nome_usuario, email, senha, id_perfil, codigo } = req.body;
-        const newUser = await Usuario.create({ nome_usuario, email, senha, id_perfil, codigo });
-        res.status(201).json(newUser);
-    } catch (error) {
-        console.error('Erro ao criar usuário:', error);
-        res.status(500).json({ error: 'Erro ao criar usuário' });
-    }
-});
-
+app.post('/users', usuarioController.createUser);
 // Rota DELETE para deletar um usuário
-app.delete('/users/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const user = await Usuario.findByPk(id);
-
-        if (!user) {
-            return res.status(404).json({ error: 'Usuário não encontrado' });
-        }
-
-        await user.destroy();
-        res.status(204).end();
-    } catch (error) {
-        console.error('Erro ao deletar usuário:', error);
-        res.status(500).json({ error: 'Erro ao deletar usuário' });
-    }
-});
-
+app.delete('/users/:id', usuarioController.deleteUser);
 // Rota GET para obter todos os usuários
-app.get('/users', async (req, res) => {
-    try {
-        const users = await Usuario.findAll();
-        res.status(200).json(users);
-    } catch (error) {
-        console.error('Erro ao buscar usuários:', error);
-        res.status(500).json({ error: 'Erro ao buscar usuários' });
-    }
-});
-
+app.get('/users', usuarioController.getUsers);
 // Rota GET para obter um usuário pelo ID
-app.get('/users/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const user = await Usuario.findByPk(id);
-
-        if (!user) {
-            return res.status(404).json({ error: 'Usuário não encontrado' });
-        }
-
-        res.status(200).json(user);
-    } catch (error) {
-        console.error('Erro ao buscar usuário:', error);
-        res.status(500).json({ error: 'Erro ao buscar usuário' });
-    }
-});
-
+app.get('/users/:id', usuarioController.getUserById);
 // Rota PUT para atualizar o perfil de um usuário
-app.put('/users/:id/profile', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { id_perfil } = req.body;
-        const user = await Usuario.findByPk(id);
-
-        if (!user) {
-            return res.status(404).json({ error: 'Usuário não encontrado' });
-        }
-
-        user.id_perfil = id_perfil;
-        await user.save();
-        res.status(204).end();
-    } catch (error) {
-        console.error('Erro ao atualizar perfil do usuário:', error);
-        res.status(500).json({ error: 'Erro ao atualizar perfil do usuário' });
-    }
-});
+app.put('/users/:id/profile', usuarioController.updateProfile);
 
 
+//Perfil:
 // Rota POST para criar um novo perfil
-app.post('/profiles', async (req, res) => {
-    try {
-        const { nome_perfil, id_transacao, funcoes } = req.body;
-        const newProfile = await Perfil.create({ nome_perfil, id_transacao, funcoes });
-        res.status(201).json(newProfile);
-    } catch (error) {
-        console.error('Erro ao criar perfil:', error);
-        res.status(500).json({ error: 'Erro ao criar perfil' });
-    }
-});
+app.post('/profiles', perfilController.createProfile);
 
+
+//Modulo:
 // Rota POST para criar um novo modulo
-app.post('/modules', async (req, res) => {
-    try {
-        const { nome_modulo, descricao, id_funcao } = req.body;
-        const newModule = await Modulo.create({ nome_modulo, descricao, id_funcao });
-        res.status(201).json(newModule);
-    } catch (error) {
-        console.error('Erro ao criar modulo:', error);
-        res.status(500).json({ error: 'Erro ao criar modulo' });
-    }
-});
+app.post('/modules', moduloController.createModule);
 
+
+//Funcao:
 // Rota POST para criar uma nova função
-app.post('/functions', async (req, res) => {
-    try {
-        const { nome_funcao, descricao, nome_modulo } = req.body;
-
-        // Encontra o módulo pelo nome
-        const modulo = await Modulo.findOne({ where: { nome_modulo } });
-
-        if (!modulo) {
-            return res.status(404).json({ error: 'Módulo não encontrado' });
-        }
-
-        const newFunction = await Funcao.create({ nome_funcao, descricao, id_modulo: modulo.id_modulo });
-        res.status(201).json(newFunction);
-    } catch (error) {
-        console.error('Erro ao criar função:', error);
-        res.status(500).json({ error: 'Erro ao criar função' });
-    }
-});
-
+app.post('/functions', funcaoController.createFunction);
 // Rota para obter todas as funções de um módulo pelo nome do módulo
 // app.get('/modules/:moduleName/functions', async (req, res) => {
 //     try {
@@ -168,17 +77,11 @@ app.post('/functions', async (req, res) => {
 //     }
 // });
 
+
+//Transacao:
 // Rota POST para criar uma nova transação
-app.post('/transactions', async (req, res) => {
-    try {
-        const { nome_transacao, descricao } = req.body;
-        const newTransaction = await Transacao.create({ nome_transacao, descricao });
-        res.status(201).json(newTransaction);
-    } catch (error) {
-        console.error('Erro ao criar transação:', error);
-        res.status(500).json({ error: 'Erro ao criar transação' });
-    }
-});
+app.post('/transactions', transacaoController.createTransaction);
+
 
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {
