@@ -47,6 +47,8 @@ app.put('/users/:id/profile', usuarioController.updateProfile);
 //Perfil:
 // Rota POST para criar um novo perfil
 app.post('/profiles', perfilController.createProfile);
+// Rota GET para obter todos os perfis
+app.get('/profiles', perfilController.getProfiles);
 // Rota GET para obter os detalhes de um perfil pelo ID
 app.get('/profiles/:id', perfilController.getProfileById);
 

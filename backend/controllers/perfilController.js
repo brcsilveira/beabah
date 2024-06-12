@@ -12,6 +12,17 @@ exports.createProfile = async (req, res) => {
     }
 };
 
+// Rota GET para obter todos os perfis
+exports.getProfiles = async (req, res) => {
+    try {
+        const perfis = await Perfil.findAll();
+        res.status(200).json(perfis);
+    } catch (error) {
+        console.error('Erro ao obter perfis:', error);
+        res.status(500).json({ error: 'Erro ao obter perfis' });
+    }
+};
+
 // Rota GET para obter os detalhes de um perfil pelo ID
 exports.getProfileById = async (req, res) => {
     try {

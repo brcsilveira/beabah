@@ -8,7 +8,6 @@ import { Header } from '../components/Header'
 import { RegisterUser } from './userManagement/RegisterUser'
 import { EditUser } from './userManagement/EditUser'
 import { LinkProfile } from './userManagement/LinkProfile'
-import { ChangeProfileLink } from './userManagement/ChangeProfileLink'
 import { CreateProfilesTF } from './profileManagement/CreateProfilesTF'
 import { AssociateModules } from './profileManagement/AssociateModules'
 import { CreateModule } from './moduleManagement/CreateModule'
@@ -18,11 +17,9 @@ import { EditTransaction } from './transactionManagement/EditTransaction'
 import { CreateTransaction } from './transactionManagement/CreateTransaction'
 import { EditFunction } from './functionManagement/EditFunction'
 import { CreateFunction } from './functionManagement/CreateFunction'
-import { LinkAlterProfiles } from './userManagement/LinkAlterProfiles'
 import { EditUsers } from './userManagement/EditUsers'
 import { DeleteUsers } from './userManagement/DeleteUsers'
 import { LinkProfiles } from './userManagement/LinkProfiles'
-import { AlterLink } from './userManagement/AlterLink'
 import { ViewUsers } from './userManagement/ViewUsers'
 import { ProfileManagement } from './profileManagement/ProfileManagement'
 import { EditProfiles } from './profileManagement/EditProfiles'
@@ -54,7 +51,6 @@ function Router() {
           <Route path="/registerUser" element={<RegisterUser />} />
           <Route path="/editUser/:userId" element={<EditUser />} />
           <Route path="/linkProfile/:userId" element={<LinkProfile />} />
-          <Route path="/changeProfileLink" element={<ChangeProfileLink />} />
           <Route path="/createProfilesTF" element={<CreateProfilesTF />} />
           <Route path="/associateModules" element={<AssociateModules />} />
           <Route path="/createModule" element={<CreateModule />} />
@@ -63,11 +59,9 @@ function Router() {
           <Route path="/editTransaction" element={<EditTransaction />} />
           <Route path="/createTransaction" element={<CreateTransaction />} />
           <Route path="/editFunction" element={<EditFunction />} />
-          <Route path="/linkAlterProfiles" element={<LinkAlterProfiles />} />
           <Route path="/editUsers" element={<EditUsers />} />
           <Route path="/deleteUsers" element={<DeleteUsers />} />
           <Route path="/linkProfiles/:userId" element={<LinkProfiles />} />
-          <Route path="/alterLink" element={<AlterLink />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/profileManagement" element={<ProfileManagement />} />
           <Route path="/editProfiles" element={<EditProfiles />} />
