@@ -60,6 +60,9 @@ app.post('/modules', moduloController.createModule);
 //Funcao:
 // Rota POST para criar uma nova função
 app.post('/functions', funcaoController.createFunction);
+// Rota GET para obter todas as funções
+app.get('/functions', funcaoController.getFunctions);
+
 // Rota para obter todas as funções de um módulo pelo nome do módulo
 // app.get('/modules/:moduleName/functions', async (req, res) => {
 //     try {
@@ -86,6 +89,8 @@ app.post('/functions', funcaoController.createFunction);
 //Transacao:
 // Rota POST para criar uma nova transação
 app.post('/transactions', transacaoController.createTransaction);
+// Rota GET para obter todas as transações
+app.get('/transactions', transacaoController.getTransactions);
 
 
 // Rota raiz para direcionar para a página de registro

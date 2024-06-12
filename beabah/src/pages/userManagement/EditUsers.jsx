@@ -32,14 +32,14 @@ export function EditUsers() {
             <ul className={styles.listaUsuarios}>
                 {users.map(user => (
                     <li key={user.id_usuario}>
-                    <span className={styles.userName}>{user.nome_usuario}</span>
-                    <span className={styles.userEmail}>{user.email}</span>
-                    <button
-                        className={styles.editButton}
-                        onClick={() => handleEdit(user.id_usuario)}    
-                    >
-                        Editar
-                    </button>
+                        <span className={styles.userName}>{user.nome_usuario}</span>
+                        <span className={styles.userEmail}>{user.email}</span>
+                        <button
+                            className={styles.editButton}
+                            onClick={() => handleEdit(user.id_usuario)}    
+                        >
+                            Editar
+                        </button>
                     </li>
                 ))}
             </ul>

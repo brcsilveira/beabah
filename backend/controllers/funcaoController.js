@@ -20,3 +20,14 @@ exports.createFunction = async (req, res) => {
         res.status(500).json({ error: 'Erro ao criar função' });
     }
 };
+
+// Rota GET para obter todas as funções
+exports.getFunctions = async (req, res) => {
+    try {
+        const functions = await Funcao.findAll();
+        res.status(200).json(functions);
+    } catch (error) {
+        console.error('Erro ao obter funções:', error);
+        res.status(500).json({ error: 'Erro ao obter funções' });
+    }
+};

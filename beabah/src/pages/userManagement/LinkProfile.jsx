@@ -105,11 +105,6 @@ export function LinkProfile() {
                     ) : (
                         <p>Nenhum perfil encontrado.</p>
                     )}
-                    {/* <label htmlFor="admin"><input type="radio" id='admin' name='perfil' value="1" checked={selectedProfile === '1'} onChange={handleProfileChange}/> Administrador</label>
-                    <label htmlFor="comum"><input type="radio" id='comum' name='perfil' value="2" checked={selectedProfile === '2'} onChange={handleProfileChange}/> Comum</label>
-                    <label htmlFor="caixaVC"><input type="radio" id='caixaVC' name='perfil' value="3" checked={selectedProfile === '3'} onChange={handleProfileChange}/> Caixa VC</label>
-                    <label htmlFor="estabelecimento"><input type="radio" id='estabelecimento' name='perfil' value="4" checked={selectedProfile === '4'} onChange={handleProfileChange}/> Estabelecimento</label>
-                    <label htmlFor="gestor"><input type="radio" id='gestor' name='perfil' value="5" checked={selectedProfile === '5'} onChange={handleProfileChange}/> Gestor</label> */}
                 </div>
                 <button className={styles.vincular}>{isUpdating ? 'Atualizar' : 'Vincular'}</button>
             </form>
