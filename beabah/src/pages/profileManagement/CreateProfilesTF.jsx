@@ -24,6 +24,7 @@ export function CreateProfilesTF () {
                     throw new Error('Erro ao buscar transações');
                 }
                 const data = await response.json();
+                console.log('Transações:', data);
                 setTransacoes(data);
             } catch (error) {
                 setError('Erro ao buscar transações');
@@ -38,6 +39,7 @@ export function CreateProfilesTF () {
                     throw new Error('Erro ao buscar funções');
                 }
                 const data = await response.json();
+                console.log('Funções:', data);
                 setFuncoes(data);
             } catch (error) {
                 setError('Erro ao buscar funções');
@@ -115,19 +117,21 @@ export function CreateProfilesTF () {
                 <input type="text" id="nome" name="nome" value={formData.nome} className={styles.nome} required placeholder="Nome (Obrigatório)" onChange={handleNomeChange} />
                 <h2>Transações</h2>
                 <div className={styles.opcoes}>
-                    {transacoes.map(transacao => (
-                        <label key={transacao.id} htmlFor={`transacao${transacao.id}`}>
-                            <input
-                                type="radio"
-                                id={`transacao${transacao.id}`}
-                                name="transacao"
-                                value={transacao.id}
-                                checked={formData.transacao === transacao.id}
-                                onChange={handleTransacaoChange}
-                            />
-                            {transacao.nome}
-                        </label>
-                    ))}
+                    {transacoes && transacoes.length > 0 ? (
+                        transacoes.map(transacao => (
+                            <label key={transacao.id_transacao} htmlFor={`transacao${transacao.id_transacao}`}>
+                                <input
+                                    type="radio"
+                                    id={`transacao${transacao.id_transacao}`}
+                                    name='transacao'
+                                    value={transacao.id_transacao.toString()}
+                                    onChange={handleTransacaoChange} />
+                                    {transacao.nome_transacao}
+                            </label>
+                        )    
+                    )) : (
+                        <p>Nenhuma transação encontrada.</p>
+                    )}
                     
                     {/* <label htmlFor="rkpc"><input type="radio" id='rkpc' name='transacao' value={1} checked={formData.transacao === '1'} onChange={handleTransacaoChange}/> Risk Price</label>
                     <label htmlFor="prfa"><input type="radio" id='prfa' name='transacao' value={2} checked={formData.transacao === '2'} onChange={handleTransacaoChange}/> Produto Fatura</label>
