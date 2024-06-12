@@ -26,7 +26,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/profileManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/profileManagement' || location.pathname === '/createProfiles' || location.pathname === '/createProfile' || location.pathname.startsWith('/createProfileTF')  || location.pathname === '/editProfiles' || location.pathname === '/selectProfiles' || location.pathname === '/deleteProfiles' || location.pathname === '/viewProfiles' ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/profileManagement' || location.pathname.startsWith('/createProfilesTF')  || location.pathname === '/editProfiles' || location.pathname === '/selectProfiles' || location.pathname === '/deleteProfiles' || location.pathname === '/viewProfiles' ? styles.active : ''}`}
                             >
                             Perfis
                             </Link>

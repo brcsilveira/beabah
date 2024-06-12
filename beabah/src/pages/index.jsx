@@ -9,8 +9,7 @@ import { RegisterUser } from './userManagement/RegisterUser'
 import { EditUser } from './userManagement/EditUser'
 import { LinkProfile } from './userManagement/LinkProfile'
 import { ChangeProfileLink } from './userManagement/ChangeProfileLink'
-import { CreateProfile } from './profileManagement/CreateProfile'
-import { CreateProfileTF } from './profileManagement/CreateProfilesTF'
+import { CreateProfilesTF } from './profileManagement/CreateProfilesTF'
 import { AssociateModules } from './profileManagement/AssociateModules'
 import { CreateModule } from './moduleManagement/CreateModule'
 import { EditModule } from './moduleManagement/EditModule'
@@ -26,7 +25,6 @@ import { LinkProfiles } from './userManagement/LinkProfiles'
 import { AlterLink } from './userManagement/AlterLink'
 import { ViewUsers } from './userManagement/ViewUsers'
 import { ProfileManagement } from './profileManagement/ProfileManagement'
-import { CreateProfiles } from './profileManagement/CreateProfiles'
 import { EditProfiles } from './profileManagement/EditProfiles'
 import { DeleteProfiles } from './profileManagement/DeleteProfiles'
 import { SelectProfiles } from './profileManagement/SelectProfiles'
@@ -57,8 +55,7 @@ function Router() {
           <Route path="/editUser/:userId" element={<EditUser />} />
           <Route path="/linkProfile/:userId" element={<LinkProfile />} />
           <Route path="/changeProfileLink" element={<ChangeProfileLink />} />
-          <Route path="/createProfile" element={<CreateProfile />} />
-          <Route path="/createProfileTF/:profileName" element={<CreateProfileTF />} />
+          <Route path="/createProfilesTF" element={<CreateProfilesTF />} />
           <Route path="/associateModules" element={<AssociateModules />} />
           <Route path="/createModule" element={<CreateModule />} />
           <Route path="/editModule" element={<EditModule />} />
@@ -73,7 +70,6 @@ function Router() {
           <Route path="/alterLink" element={<AlterLink />} />
           <Route path="/viewUsers" element={<ViewUsers />} />
           <Route path="/profileManagement" element={<ProfileManagement />} />
-          <Route path="/createProfiles" element={<CreateProfiles />} />
           <Route path="/editProfiles" element={<EditProfiles />} />
           <Route path="/deleteProfiles" element={<DeleteProfiles />} />
           <Route path="/selectProfiles" element={<SelectProfiles />} />
