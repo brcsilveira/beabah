@@ -86,7 +86,7 @@ function Router() {
           <Route path="/viewFunctions" element={<ViewFunctions />} /> 
           <Route path="/createFunction/:moduleName" element={<CreateFunction />} />
           <Route path="/selectUsers" element={<SelectUsers />} />
-          <Route path="/editProfile" element={<EditProfile />} />
+          <Route path="/editProfile/:profileId" element={<EditProfile />} />
           <Route path="/viewProfiles" element={<ViewProfiles />} />
         </Route>
         <Route element={<ContainerNotLogged />}>
