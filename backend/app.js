@@ -53,6 +53,8 @@ app.get('/profiles', perfilController.getProfiles);
 app.get('/profiles/:id', perfilController.getProfileById);
 // Rota PUT para atualizar um perfil
 app.put('/profiles/:id', perfilController.updateProfile);
+// Rota para associar um Perfil a Módulos
+app.post('/profiles/:id/modules', perfilController.associateProfilesToModules);
 
 //Modulo:
 // Rota POST para criar um novo modulo

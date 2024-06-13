@@ -1,4 +1,32 @@
 const Perfil = require('../models/perfil');
+const Modulo = require('../models/modulos');
+const PerfilModulo = require('../models/perfil_modulos');
+
+// Rota para associar um Perfil a Módulos
+exports.associateProfilesToModules = async (req, res) => {
+    try {
+        const { id_perfil, id_modulo } = req.body;
+
+        // Verifica se o perfil existe
+        const perfil = await Perfil.findByPk(id_perfil);
+        if (!perfil) {
+            return res.status(404).json({ error: 'Perfil não encontrado' });
+        }
+
+        // Verifica se os módulos existem
+        const modulos = await Modulo.findAll({ where: { id_modulo: id_modulo } });
+        if (modulos.length === 0) {
+            return res.status(404).json({ error: 'Módulo não encontrado' });
+        }
+
+        // Associa o perfil aos módulos
+        await PerfilModulo.create({ id_perfil, id_modulo });
+        res.status(201).json({ message: 'Perfil associado ao módulo' });
+    } catch (error) {
+        console.error('Erro ao associar perfil a módulos:', error);
+        res.status(500).json({ error: 'Erro ao associar perfil a módulos' });
+    }
+};
 
 // Rota POST para criar um novo perfil 
 exports.createProfile = async (req, res) => {
