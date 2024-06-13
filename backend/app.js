@@ -2,11 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const Usuario = require('./models/usuarios'); // Corrigido para importar corretamente
-// const Funcao = require('./models/funcoes');
-// const Modulo = require('./models/modulos');
-// const Perfil = require('./models/perfil');
-// const Transacao = require('./models/transacoes');
 const usuarioController = require('./controllers/usuarioController');
 const perfilController = require('./controllers/perfilController');
 const moduloController = require('./controllers/moduloController');
@@ -14,6 +9,13 @@ const funcaoController = require('./controllers/funcaoController');
 const transacaoController = require('./controllers/transacaoController');
 const app = express();
 const PORT = 3000;
+
+const Perfil = require('./models/perfil');
+const Modulo = require('./models/modulos');
+const PerfilModulo = require('./models/perfil_modulos');
+
+// Define associações
+require('./models/associacoes');
 
 
 app.use(cors({ origin: '*' })); // Feito pra acessar de qualquer lugar
@@ -54,7 +56,7 @@ app.get('/profiles/:id', perfilController.getProfileById);
 // Rota PUT para atualizar um perfil
 app.put('/profiles/:id', perfilController.updateProfile);
 // Rota para associar um Perfil a Módulos
-app.post('/profiles/:id/modules', perfilController.associateProfilesToModules);
+app.post('/profiles/modules', perfilController.associateProfilesToModules);
 
 //Modulo:
 // Rota POST para criar um novo modulo

@@ -5,7 +5,7 @@ const PerfilModulo = require('../models/perfil_modulos');
 // Rota para associar um Perfil a Módulos
 exports.associateProfilesToModules = async (req, res) => {
     try {
-        const { id_perfil, id_modulo } = req.body;
+        const { id_perfil, id_modulos } = req.body;
 
         // Verifica se o perfil existe
         const perfil = await Perfil.findByPk(id_perfil);
@@ -14,14 +14,16 @@ exports.associateProfilesToModules = async (req, res) => {
         }
 
         // Verifica se os módulos existem
-        const modulos = await Modulo.findAll({ where: { id_modulo: id_modulo } });
-        if (modulos.length === 0) {
-            return res.status(404).json({ error: 'Módulo não encontrado' });
+        const modulos = await Modulo.findAll({ where: { id_modulo: id_modulos } });
+        if (modulos.length !== id_modulos.length) {
+            return res.status(404).json({ error: 'Um ou mais módulos não encontrados' });
         }
 
         // Associa o perfil aos módulos
-        await PerfilModulo.create({ id_perfil, id_modulo });
-        res.status(201).json({ message: 'Perfil associado ao módulo' });
+        const associacoes = id_modulos.map(id_modulo => ({ id_perfil, id_modulo }));
+        await PerfilModulo.bulkCreate(associacoes);
+
+        res.status(201).json({ message: 'Perfil associado aos módulos' });
     } catch (error) {
         console.error('Erro ao associar perfil a módulos:', error);
         res.status(500).json({ error: 'Erro ao associar perfil a módulos' });
