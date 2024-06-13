@@ -29,5 +29,8 @@ const Perfil = sequelize.define('perfil', {
     timestamps: true // Sequelize adiciona automaticamente os campos createdAt e updatedAt
 });
 
+// Define a associação com o modelo de Módulo
+Perfil.belongsToMany(Modulo, { through: 'perfil_modulos', foreignKey: 'id_perfil' });
+
 // Exporta o modelo
 module.exports = Perfil;
