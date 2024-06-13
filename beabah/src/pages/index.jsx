@@ -42,6 +42,7 @@ import { DeleteFunctions } from './functionManagement/DeleteFunctions'
 import { ViewFunctions } from './functionManagement/ViewFunctions'
 import { SelectUsers } from './userManagement/SelectUsers'
 import { EditProfile } from './profileManagement/EditProfile'
+import { ViewProfiles } from './profileManagement/ViewProfiles'
 
 function Router() {
   return (
@@ -86,6 +87,7 @@ function Router() {
           <Route path="/createFunction/:moduleName" element={<CreateFunction />} />
           <Route path="/selectUsers" element={<SelectUsers />} />
           <Route path="/editProfile" element={<EditProfile />} />
+          <Route path="/viewProfiles" element={<ViewProfiles />} />
         </Route>
         <Route element={<ContainerNotLogged />}>
           <Route path="/registerNewPassword" element={<RegisterNewPassword />} />
