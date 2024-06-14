@@ -43,11 +43,11 @@
     color: var(--greenForgotPassword);
 }
 
-.associateButton {
+.selectButton {
     background-color: var(--greenButtonAndIconAndToast);
     color: white;
     border: none;
-    max-width: 90px;
+    max-width: 110px;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;

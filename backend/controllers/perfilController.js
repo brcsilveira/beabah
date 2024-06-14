@@ -30,6 +30,33 @@ exports.associateProfilesToModules = async (req, res) => {
     }
 };
 
+// Rota para obter os módulos associados a um perfil
+exports.getAssociateProfileModules = async (req, res) => {
+    try {
+        const { id_perfil } = req.params;
+
+        // Verifica se o perfil existe
+        const perfil = await Perfil.findByPk(id_perfil);
+        if (!perfil) {
+            return res.status(404).json({ error: 'Perfil não encontrado' });
+        }
+
+        // Busca os módulos associados ao perfil
+        const modulos = await Modulo.findAll({
+            include: [{
+                model: Perfil,
+                where: { id_perfil },
+                through: { attributes: [] } // Omite os atributos da tabela de junção
+            }]
+        });
+
+        res.status(200).json(modulos);
+    } catch (error) {
+        console.error('Erro ao buscar módulos associados ao perfil:', error);
+        res.status(500).json({ error: 'Erro ao buscar módulos associados ao perfil' });
+    }
+};
+
 // Rota POST para criar um novo perfil 
 exports.createProfile = async (req, res) => {
     try {

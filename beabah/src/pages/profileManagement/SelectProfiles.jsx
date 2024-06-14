@@ -26,6 +26,22 @@ export function SelectProfiles () {
         fetchProfiles();
     }, []);
 
+    const fetchProfileModules = async (profileId) => {
+        try {
+            const response = await fetch(`http://localhost:3000/profiles/${profileId}/modules`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log('Modulos associados ao perfil:', data);
+            return data.length > 0; // Retorna true se há módulos associados, false caso contrário
+        } catch (error) {
+            setError('Erro ao buscar módulos associados ao perfil');
+            console.error('Erro ao buscar módulos associados ao perfil:', error);
+            return false;
+        }
+    }
+
     const handleAssociate = (profileId) => {
         navigate(`/associateModules/${profileId}`);
     }
@@ -36,16 +52,16 @@ export function SelectProfiles () {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.titulo}>Associar Perfil</h1>
+            <h1 className={styles.titulo}>Selecionar Perfil</h1>
             <ul className={styles.listaPerfis}>
                 {profiles.map(profile => (
                     <li key={profile.id_perfil} className={styles.itemPerfil}>
                         <span className={styles.profileName}>{profile.nome_perfil}</span>
                         <button 
-                            className={styles.associateButton} 
+                            className={styles.selectButton} 
                             onClick={() => handleAssociate(profile.id_perfil)}
                         >
-                            Associar
+                            Selecionar
                         </button>  
                     </li>
                 ))}
