@@ -10,10 +10,6 @@ const transacaoController = require('./controllers/transacaoController');
 const app = express();
 const PORT = 3000;
 
-const Perfil = require('./models/perfil');
-const Modulo = require('./models/modulos');
-const PerfilModulo = require('./models/perfil_modulos');
-
 // Define associações
 require('./models/associacoes');
 
@@ -61,6 +57,8 @@ app.post('/profiles/modules', perfilController.associateProfilesToModules);
 //Modulo:
 // Rota POST para criar um novo modulo
 app.post('/modules', moduloController.createModule);
+// Rota GET para obter todos os módulos
+app.get('/modules', moduloController.getModules);
 
 
 //Funcao:

@@ -11,3 +11,14 @@ exports.createModule = async (req, res) => {
         res.status(500).json({ error: 'Erro ao criar modulo' });
     }
 }
+
+// Rota GET para obter todos os módulos
+exports.getModules = async (req, res) => {
+    try {
+        const modules = await Modulo.findAll();
+        res.status(200).json(modules);
+    } catch (error) {
+        console.error('Erro ao obter módulos:', error);
+        res.status(500).json({ error: 'Erro ao obter módulos' });
+    }
+};
