@@ -56,7 +56,7 @@ function Router() {
           <Route path="/createProfilesTF" element={<CreateProfilesTF />} />
           <Route path="/associateModules/:profileId" element={<AssociateModules />} />
           <Route path="/createModule" element={<CreateModule />} />
-          <Route path="/editModule" element={<EditModule />} />
+          <Route path="/editModule/:moduleId" element={<EditModule />} />
           <Route path="/selectTransactions" element={<SelectTransactions />} />
           <Route path="/editTransaction" element={<EditTransaction />} />
           <Route path="/createTransaction" element={<CreateTransaction />} />

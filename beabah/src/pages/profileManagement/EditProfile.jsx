@@ -165,7 +165,7 @@ export function EditProfile() {
                         <p>Nenhuma função encontrada.</p>
                     )}  
                 </div>
-                <button type="submit" className={styles.criar}>Atualizar</button>
+                <button type="submit" className={styles.atualizar}>Atualizar</button>
             </form>
         </main>
     );

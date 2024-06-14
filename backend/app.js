@@ -63,6 +63,10 @@ app.delete('/profiles/:id', perfilController.deleteProfile);
 app.post('/modules', moduloController.createModule);
 // Rota GET para obter todos os módulos
 app.get('/modules', moduloController.getModules);
+// Rota GET para obter um módulo pelo ID
+app.get('/modules/:id', moduloController.getModuleById);
+// Rota PUT para atualizar um módulo
+app.put('/modules/:id', moduloController.updateModule);
 
 
 //Funcao:

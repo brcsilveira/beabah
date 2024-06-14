@@ -72,7 +72,7 @@
     margin-right: 0.6rem;
 }
 
-.container .criar {
+.atualizar {
     width: 100%; /* Tornando o botão responsivo */
     max-width: 300px; /* Definindo uma largura máxima para o botão */
     padding: 10px;
@@ -85,9 +85,10 @@
     font-size: 1rem;
     font-weight: bold;
     grid-row: 3;
+    transition: 0.2s;
 }
 
-.criar:hover {
+.atualizar:hover {
     background-color: #0a6b32;
 }
 
@@ -109,7 +110,7 @@
     .container .formularios .formulario .opcoes label input {
         font-size: 1.125rem;
     }
-    .container .criar {
+    .container .atualizar {
         margin-top: 1rem;
         width: 12rem;
         font-size: 1.25rem;
