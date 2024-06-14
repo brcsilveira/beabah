@@ -1,6 +1,7 @@
 const Perfil = require('../models/perfil');
 const Modulo = require('../models/modulos');
 const PerfilModulo = require('../models/perfil_modulos');
+const Usuario = require('../models/usuarios');
 
 // Rota para associar um Perfil a Módulos
 exports.associateProfilesToModules = async (req, res) => {
@@ -113,5 +114,31 @@ exports.updateProfile = async (req, res) => {
     catch (error) {
         console.error('Erro ao atualizar perfil:', error);
         res.status(500).json({ error: 'Erro ao atualizar perfil' });
+    }
+};
+
+// Rota DELETE para excluir um perfil
+exports.deleteProfile = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const perfil = await Perfil.findByPk(id);
+        if (!perfil) {
+            return res.status(404).json({ error: 'Perfil não encontrado' });
+        }
+
+        // Desvincula os usuários associados ao perfil
+        await Usuario.update(
+            { id_perfil: null },  // Remove a referência ao perfil
+            { where: { id_perfil: id } }
+        );
+
+        // Exclui as associações do perfil com os módulos
+        await perfil.setModulos([]);
+
+        await perfil.destroy();
+        res.status(200).json({ message: 'Perfil excluído' });
+    } catch (error) {
+        console.error('Erro ao excluir perfil:', error);
+        res.status(500).json({ error: 'Erro ao excluir perfil' });
     }
 };

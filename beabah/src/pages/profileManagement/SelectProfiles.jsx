@@ -8,22 +8,6 @@ export function SelectProfiles () {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // const fetchProfiles = async () => {
-        //     try {
-        //         const response = await fetch('http://localhost:3000/profiles');
-        //         if (!response.ok) {
-        //             throw new Error('Network response was not ok');
-        //         }
-        //         const data = await response.json();
-        //         console.log('Profiles data:', data); // Adiciona log para verificar a resposta da API
-        //         setProfiles(data);
-        //     } catch (error) {
-        //         setError('Erro ao buscar perfis');
-        //         console.error('Erro ao buscar perfis:', error); // Adiciona log para erros
-        //     }
-        // }
-
-        // fetchProfiles();
         const fetchProfilesWithModules = async () => {
             try {
                 const response = await fetch('http://localhost:3000/profiles');
@@ -77,17 +61,6 @@ export function SelectProfiles () {
         <div className={styles.container}>
             <h1 className={styles.titulo}>Selecionar Perfil</h1>
             <ul className={styles.listaPerfis}>
-                {/* {profiles.map(profile => (
-                    <li key={profile.id_perfil} className={styles.itemPerfil}>
-                        <span className={styles.profileName}>{profile.nome_perfil}</span>
-                        <button 
-                            className={styles.selectButton} 
-                            onClick={() => handleAssociate(profile.id_perfil)}
-                        >
-                            Selecionar
-                        </button>  
-                    </li>
-                ))} */}
                 {profiles.map(profile => (
                     <li key={profile.id_perfil} className={styles.itemPerfil}>
                         <span className={styles.profileName}>{profile.nome_perfil}</span>
