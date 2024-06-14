@@ -1,0 +1,71 @@
+/* Modal.module.css */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: #9EFDC3;
+    padding: 20px;
+    border-radius: 16px;
+    width: 350px;
+    height: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.titulo {
+    color: #005C24;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.mensagem {
+    color: #005C24;
+    font-size: 1.5rem;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.confirm {
+    background-color: #19A851;
+    color: white;
+    padding: 10px;
+    max-width: 125px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.confirm:hover {
+    background-color: #0a6b32;
+}
+
+.cancel {
+    background-color: #ED1C24;
+    color: white;
+    padding: 10px;
+    max-width: 125px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel:hover {
+    background-color: #aa1217;
+}

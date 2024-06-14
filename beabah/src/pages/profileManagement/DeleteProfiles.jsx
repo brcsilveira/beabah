@@ -74,12 +74,6 @@ export function DeleteProfiles () {
             </ul>
             <ModalProfile 
                 isOpen={isModalOpen}
-                // onRequestClose={closeModal}
-                // onConfirm={handleDeleteProfile}
-                // title="Excluir Perfil"
-                // message={`Deseja realmente excluir o perfil ${selectedProfile?.nome_perfil}?`}
-                // confirmText="Excluir"
-                // cancelText="Cancelar"
                 onClose={closeModal}
                 onConfirm={handleDeleteProfile}
                 profile={selectedProfile}

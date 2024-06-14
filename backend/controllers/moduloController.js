@@ -56,3 +56,19 @@ exports.updateModule = async (req, res) => {
         res.status(500).json({ error: 'Erro ao atualizar módulo' });
     }
 }
+
+// Rota DELETE para deletar um módulo
+exports.deleteModule = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const module = await Modulo.findByPk(id);
+        if (!module) {
+            return res.status(404).json({ error: 'Módulo não encontrado' });
+        }
+        await module.destroy();
+        res.status(204).end();
+    } catch (error) {
+        console.error('Erro ao deletar módulo:', error);
+        res.status(500).json({ error: 'Erro ao deletar módulo' });
+    }
+}

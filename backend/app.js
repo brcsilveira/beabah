@@ -67,6 +67,8 @@ app.get('/modules', moduloController.getModules);
 app.get('/modules/:id', moduloController.getModuleById);
 // Rota PUT para atualizar um módulo
 app.put('/modules/:id', moduloController.updateModule);
+// Rota DELETE para deletar um módulo
+app.delete('/modules/:id', moduloController.deleteModule);
 
 
 //Funcao:
