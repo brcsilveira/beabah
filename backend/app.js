@@ -76,6 +76,10 @@ app.delete('/modules/:id', moduloController.deleteModule);
 app.post('/functions', funcaoController.createFunction);
 // Rota GET para obter todas as funções
 app.get('/functions', funcaoController.getFunctions);
+// Rota GET para obter uma função pelo ID
+app.get('/functions/:id', funcaoController.getFunctionById);
+// Rota PUT para atualizar uma função
+app.put('/functions/:id', funcaoController.updateFunction);
 
 // Rota para obter todas as funções de um módulo pelo nome do módulo
 // app.get('/modules/:moduleName/functions', async (req, res) => {

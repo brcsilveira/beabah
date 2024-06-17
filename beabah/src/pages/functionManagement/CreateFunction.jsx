@@ -10,7 +10,7 @@ export function CreateFunction () {
         descricao: '',
         id_modulo: moduleId
     });
-    const [moduleName, setModuleName] = useState('');
+    const [module, setModule] = useState({});
 
     useEffect(() => {
         const fetchModule = async () => {
@@ -20,7 +20,7 @@ export function CreateFunction () {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setModuleName(data.nome);
+                setModule(data);
             } catch (error) {
                 console.error('Erro ao buscar módulo');
             }
@@ -30,9 +30,10 @@ export function CreateFunction () {
     }, [moduleId]);
 
     const handleChange = (event) => {
+        const { name, value } = event.target;
         setFunctionData({
             ...functionData,
-            [event.target.name]: event.target.value
+            [name]: value
         });
     }
 
@@ -46,7 +47,7 @@ export function CreateFunction () {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    nome: functionData.nome,
+                    nome_funcao: functionData.nome,
                     descricao: functionData.descricao,
                     id_modulo: functionData.id_modulo
                 })
@@ -56,7 +57,7 @@ export function CreateFunction () {
                 throw new Error('Network response was not ok');
             }
 
-            navigate(`/module/${moduleId}`);
+            navigate('/functionManagement', { state: { message: 'Função criada!' } });
         } catch (error) {
             console.error('Erro ao criar função');
         }
@@ -67,13 +68,14 @@ export function CreateFunction () {
             <form onSubmit={handleSubmit} className={styles.formulario}>
                 <h1 className={styles.tituloFuncao}>Criar Função</h1>
                 <div className={styles.nomesContainer}>
-                    <h2 className={styles.nomeModulo}>{moduleName}</h2>
+                    <h2 className={styles.nomeModulo}>{module.nome_modulo} - {module.descricao}</h2>
                     <input 
                         type="text"
                         className={styles.nomeFuncao}
-                        id="function"
+                        id="nome"
                         name="nome"
                         onChange={handleChange}
+                        required
                         placeholder="Nome (Obrigatório)"
                     />
                 </div>

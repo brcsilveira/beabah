@@ -11,7 +11,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
-.formulario h1 {
+.formulario .titulo {
     color: var(--greenTitleAndViewProfiles);
     font-size: 1.25rem;
     font-weight: bold;
@@ -19,7 +19,7 @@
     margin: 2rem 0 1rem 0;
 }
 
-.formulario .nomeFuncao {
+.formulario .nomeModulo {
     color: var(--greenButtonAndIconAndToast);
     font-size: 1rem;
     font-weight: bold;
@@ -28,7 +28,7 @@
     width: 100%;
 }
 
-.formulario .nomeFuncao::after {
+.formulario .nomeModulo::after {
     content: '';
     display: block;
     width: 15rem; 
@@ -36,6 +36,19 @@
     background-color: var(--greenButtonAndIconAndToast); 
     margin: 0 auto;
     margin-top: 5px; /* Espaçamento entre o texto e a linha */
+}
+
+.formulario .nomeFuncao {
+    width: 100%; /* Tornando os inputs responsivos */
+    max-width: 300px; /* Definindo uma largura máxima para os inputs */
+    padding: 0 10px 10px 10px;
+    border: none;
+    border-bottom: 1px solid var(--greenButtonAndIconAndToast);
+    text-align: center;
+}
+
+.formulario .nomeFuncao:focus {
+    outline: none; /* Remover o outline padrão no foco */
 }
 
 .formulario div {

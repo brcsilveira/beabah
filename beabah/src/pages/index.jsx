@@ -60,7 +60,7 @@ function Router() {
           <Route path="/selectTransactions" element={<SelectTransactions />} />
           <Route path="/editTransaction" element={<EditTransaction />} />
           <Route path="/createTransaction" element={<CreateTransaction />} />
-          <Route path="/editFunction" element={<EditFunction />} />
+          <Route path="/editFunction/:functionId" element={<EditFunction />} />
           <Route path="/editUsers" element={<EditUsers />} />
           <Route path="/deleteUsers" element={<DeleteUsers />} />
           <Route path="/linkProfiles/:userId" element={<LinkProfiles />} />
