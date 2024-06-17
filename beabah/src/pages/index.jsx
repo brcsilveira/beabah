@@ -75,7 +75,7 @@ function Router() {
           <Route path="/viewModules" element={<ViewModules />} />
           <Route path="/transactionManagement" element={<TransactionManagement />} />
           <Route path="/selectModulesT" element={<SelectModulesT />} />
-          <Route path="/selectModulesF" element={<SelectModulesF />} />
+          <Route path="/selectModulesF/" element={<SelectModulesF />} />
           <Route path="/editTransactions" element={<EditTransactions />} />
           <Route path="/deleteTransactions" element={<DeleteTransactions />} />
           <Route path="/viewTransactions" element={<ViewTransactions />} />
@@ -84,7 +84,7 @@ function Router() {
           <Route path="/editFunctions" element={<EditFunctions />} />    
           <Route path="/deleteFunctions" element={<DeleteFunctions />} />      
           <Route path="/viewFunctions" element={<ViewFunctions />} /> 
-          <Route path="/createFunction/:moduleName" element={<CreateFunction />} />
+          <Route path="/createFunction/:moduleId" element={<CreateFunction />} />
           <Route path="/selectUsers" element={<SelectUsers />} />
           <Route path="/editProfile/:profileId" element={<EditProfile />} />
           <Route path="/viewProfiles" element={<ViewProfiles />} />

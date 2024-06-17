@@ -24,7 +24,7 @@ export function SelectUsers() {
 
     const handleSelect = (userId) => {
         navigate(`/linkProfiles/${userId}`);
-    }
+    };
 
     return (
         <div className={styles.container}>

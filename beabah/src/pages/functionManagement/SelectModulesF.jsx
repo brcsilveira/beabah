@@ -1,18 +1,55 @@
-import { Link } from 'react-router-dom'
 import styles from '../../styles/functionManagement/selectModulesF.module.css'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function SelectModulesF() {
+    const [modules, setModules] = useState([]);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchModules = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/modules');
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar módulos');
+                }
+                const data = await response.json();
+                console.log('Módulos:', data);
+                setModules(data);
+            } catch (error) {
+                setError('Erro ao buscar módulos');
+                console.error('Erro ao buscar módulos:', error);
+            }
+        };
+
+        fetchModules();
+    }, []);
+
+    const handleSelect = (moduleId) => {
+        navigate(`/createFunction/${moduleId}`);
+    };
+
+    if (error) {
+        return <div>{error}</div>;
+    };
+
     return (
-        <div>
+        <div className={styles.container}>
             <h1 className={styles.titulo}>Selecionar Módulo</h1>
-            <div className={styles.container}>
-                <Link to="/createFunction/CA" className={styles.gridItem}><span>Cadastro</span></Link>
-                <Link to="/createFunction/DG" className={styles.gridItem}><span>Digitalização</span></Link>
-                <Link to="/createFunction/FV" className={styles.gridItem}><span>Fichas VerdeCard</span></Link>
-                <Link to="/createFunction/SC" className={styles.gridItem}><span>VerdeCard</span></Link>
-                <Link to="/createFunction/VC" className={styles.gridItem}><span>Lojista Afiliado</span></Link>
-                <Link to="/createFunction/VG" className={styles.gridItem}><span>Controle</span></Link>
-            </div>
+            <ul className={styles.listaModulos}>
+                {modules.map(module => (
+                    <li key={module.id_modulo} className={styles.itemModulo}>
+                        <span className={styles.moduleName}>{module.nome_modulo} - {module.descricao}</span>
+                        <button
+                            className={styles.selectButton}
+                            onClick={() => handleSelect(module.id_modulo)}
+                        >
+                            Selecionar
+                        </button>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

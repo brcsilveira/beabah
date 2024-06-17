@@ -1,76 +1,66 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import styles from "../../styles/functionManagement/createFunction.module.css"
 
 export function CreateFunction () {
-    const { moduleName } = useParams();
+    const { moduleId } = useParams();
     const navigate = useNavigate();
-
-    const [formData, setFormData] = useState({
+    const [ functionData, setFunctionData ] = useState({
         nome: '',
-        descricao: ''
+        descricao: '',
+        id_modulo: moduleId
     });
+    const [moduleName, setModuleName] = useState('');
 
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-
-        setErrors({
-            ...errors,
-            [name]: ''
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const validationErrors = validateFormData(formData);
-        if (Object.keys(validationErrors).length === 0) {
-            console.log('Formulário válido. Enviando dados:', formData);
-            const data = {
-                nome_funcao: formData.nome,
-                descricao: formData.descricao,
-                nome_modulo: moduleName
-            };
-
+    useEffect(() => {
+        const fetchModule = async () => {
             try {
-                const response = await fetch('http://localhost:3000/functions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    navigate('/functionManagement', { state: { message: 'Função cadastrada!' } });
-                } else {
-                    console.error('Erro ao cadastrar função:', response.statusText);
-                    setErrors({ submit: 'Erro ao cadastrar função.' });
+                const response = await fetch(`http://localhost:3000/modules/${moduleId}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                const data = await response.json();
+                setModuleName(data.nome);
             } catch (error) {
-                console.error('Erro ao cadastrar função:', error);
-                setErrors({ submit: 'Erro ao cadastrar função.' });
+                console.error('Erro ao buscar módulo');
             }
-        } else {
-            setErrors(validationErrors);
+        };
+
+        fetchModule();
+    }, [moduleId]);
+
+    const handleChange = (event) => {
+        setFunctionData({
+            ...functionData,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch('http://localhost:3000/functions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: functionData.nome,
+                    descricao: functionData.descricao,
+                    id_modulo: functionData.id_modulo
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            navigate(`/module/${moduleId}`);
+        } catch (error) {
+            console.error('Erro ao criar função');
         }
-    };
-
-    const validateFormData = (data) => {
-        let errors = {};
-
-        if (!data.nome.trim()) {
-            errors.nome = 'Nome é obrigatório';
-        }
-
-        return errors;
-    };
-
+    }
 
     return (
         <main>
@@ -83,20 +73,15 @@ export function CreateFunction () {
                         className={styles.nomeFuncao}
                         id="function"
                         name="nome"
-                        value={formData.nome}
                         onChange={handleChange}
                         placeholder="Nome (Obrigatório)"
                     />
-                    <p className={`${styles.errorPlaceholder} ${errors.nome ? styles.errorVisible : ''}`}>
-                    {errors.nome || ' '}
-                    </p>{/* Espaço reservado para mensagem de erro */}
                 </div>
                 <div className={styles.descricaoContainer}>
                     <label htmlFor="descricao" className={styles.descricao}>Descrição:</label>
                     <textarea 
                         name="descricao" 
                         id="descricao" 
-                        value={formData.descricao}
                         onChange={handleChange}
                         placeholder="Opcional"
                     ></textarea>
