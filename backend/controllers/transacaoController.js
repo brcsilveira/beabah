@@ -22,3 +22,53 @@ exports.getTransactions = async (req, res) => {
         res.status(500).json({ error: 'Erro ao obter transações' });
     }
 };
+
+// Rota GET para obter uma transação pelo ID
+exports.getTransactionById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const transaction = await Transacao.findByPk(id);
+        if (!transaction) {
+            return res.status(404).json({ error: 'Transação não encontrada' });
+        }
+        res.status(200).json(transaction);
+    } catch (error) {
+        console.error('Erro ao obter transação:', error);
+        res.status(500).json({ error: 'Erro ao obter transação' });
+    }
+};
+
+// Rota PUT para atualizar uma transação
+exports.updateTransaction = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nome_transacao, descricao } = req.body;
+        const transaction = await Transacao.findByPk(id);
+        if (!transaction) {
+            return res.status(404).json({ error: 'Transação não encontrada' });
+        }
+        transaction.nome_transacao = nome_transacao;
+        transaction.descricao = descricao;
+        await transaction.save();
+        res.status(200).json(transaction);
+    } catch (error) {
+        console.error('Erro ao atualizar transação:', error);
+        res.status(500).json({ error: 'Erro ao atualizar transação' });
+    }
+};
+
+// Rota DELETE para deletar uma transação
+exports.deleteTransaction = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const transaction = await Transacao.findByPk(id);
+        if (!transaction) {
+            return res.status(404).json({ error: 'Transação não encontrada' });
+        }
+        await transaction.destroy();
+        res.status(204).end();
+    } catch (error) {
+        console.error('Erro ao deletar transação:', error);
+        res.status(500).json({ error: 'Erro ao deletar transação' });
+    }
+};

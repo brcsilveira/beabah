@@ -83,35 +83,17 @@ app.put('/functions/:id', funcaoController.updateFunction);
 // Rota DELETE para deletar uma função
 app.delete('/functions/:id', funcaoController.deleteFunction);
 
-// Rota para obter todas as funções de um módulo pelo nome do módulo
-// app.get('/modules/:moduleName/functions', async (req, res) => {
-//     try {
-//         const { moduleName } = req.params;
-        
-//         // Encontra o módulo pelo nome
-//         const modulo = await Modulo.findOne({
-//             where: { nome_modulo: moduleName },
-//             include: [Funcao]
-//         });
-
-//         if (!modulo) {
-//             return res.status(404).json({ error: 'Módulo não encontrado' });
-//         }
-
-//         res.status(200).json(modulo.funcoes);
-//     } catch (error) {
-//         console.error('Erro ao obter funções do módulo:', error);
-//         res.status(500).json({ error: 'Erro ao obter funções do módulo' });
-//     }
-// });
-
-
 //Transacao:
 // Rota POST para criar uma nova transação
 app.post('/transactions', transacaoController.createTransaction);
 // Rota GET para obter todas as transações
 app.get('/transactions', transacaoController.getTransactions);
-
+// Rota GET para obter uma transação pelo ID
+app.get('/transactions/:id', transacaoController.getTransactionById);
+// Rota PUT para atualizar uma transação
+app.put('/transactions/:id', transacaoController.updateTransaction);
+// Rota DELETE para deletar uma transação
+app.delete('/transactions/:id', transacaoController.deleteTransaction);
 
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {
