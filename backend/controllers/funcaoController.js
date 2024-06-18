@@ -86,3 +86,21 @@ exports.updateFunction = async (req, res) => {
         res.status(500).json({ error: 'Erro ao atualizar função' });
     }
 };
+
+//Rota DELETE para deletar uma função
+exports.deleteFunction = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const funcao = await Funcao.findByPk(id);
+
+        if (!funcao) {
+            return res.status(404).json({ error: 'Função não encontrada' });
+        }
+
+        await funcao.destroy();
+        res.status(204).end();
+    } catch (error) {
+        console.error('Erro ao deletar função:', error);
+        res.status(500).json({ error: 'Erro ao deletar função' });
+    }
+};

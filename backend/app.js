@@ -80,6 +80,8 @@ app.get('/functions', funcaoController.getFunctions);
 app.get('/functions/:id', funcaoController.getFunctionById);
 // Rota PUT para atualizar uma função
 app.put('/functions/:id', funcaoController.updateFunction);
+// Rota DELETE para deletar uma função
+app.delete('/functions/:id', funcaoController.deleteFunction);
 
 // Rota para obter todas as funções de um módulo pelo nome do módulo
 // app.get('/modules/:moduleName/functions', async (req, res) => {
