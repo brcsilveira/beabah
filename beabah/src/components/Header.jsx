@@ -50,7 +50,7 @@ export function Header() {
                         <li>
                             <Link 
                             to="/transactionManagement" 
-                            className={`${styles.navLink} ${location.pathname === '/transactionManagement' || location.pathname === '/createTransaction' || location.pathname === '/selectModulesT' || location.pathname.startsWith('/assignTransactions') ? styles.active : ''}`}
+                            className={`${styles.navLink} ${location.pathname === '/transactionManagement' || location.pathname === '/createTransaction' || location.pathname === '/selectModulesT' || location.pathname === '/viewTransactions' || location.pathname.startsWith('/assignTransactions') || location.pathname.startsWith('/editTransaction') || location.pathname.startsWith('/deleteTransactions') ? styles.active : ''}`}
                             >
                             Transações
                             </Link>

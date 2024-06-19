@@ -42,7 +42,7 @@ export function ViewFunctions() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.titulo}>Editar Funções</h1>
+            <h1 className={styles.titulo}>Visualizar Funções</h1>
             <ul className={styles.listaFuncoes}>
                 {functions.map(funcao => (
                     <li key={funcao.id_funcao} className={styles.itemfuncao}>

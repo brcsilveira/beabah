@@ -18,11 +18,11 @@ export function TransactionManagement() {
 
     return (
         <div className={styles.container}>
-            <Link to='/selectModulesT' className={styles.gridItem}><span>Atribuir</span></Link >
-            <Link  className={styles.gridItem}><span>Editar</span></Link >
-            <Link to='/createTransaction' className={styles.gridItem}><span>Criar</span></Link >
-            <Link  className={styles.gridItem}><span>Remover</span></Link >
-            <Link  className={styles.gridItem}><span>Visualizar</span></Link >
+            <Link to="/selectModulesT" className={styles.gridItem}><span>Atribuir</span></Link >
+            <Link to="/editTransactions" className={styles.gridItem}><span>Editar</span></Link >
+            <Link to="/createTransaction" className={styles.gridItem}><span>Criar</span></Link >
+            <Link to="/deleteTransactions" className={styles.gridItem}><span>Remover</span></Link >
+            <Link to="/viewTransactions" className={styles.gridItem}><span>Visualizar</span></Link >
             <ToastContainer className={styles.toastContainer} toastClassName={styles.toast}/>
         </div>
     )

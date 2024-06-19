@@ -59,7 +59,7 @@ function Router() {
           <Route path="/createModule" element={<CreateModule />} />
           <Route path="/editModule/:moduleId" element={<EditModule />} />
           <Route path="/selectTransactions" element={<SelectTransactions />} />
-          <Route path="/editTransaction" element={<EditTransaction />} />
+          <Route path="/editTransaction/:transactionId" element={<EditTransaction />} />
           <Route path="/createTransaction" element={<CreateTransaction />} />
           <Route path="/editFunction/:functionId" element={<EditFunction />} />
           <Route path="/editUsers" element={<EditUsers />} />

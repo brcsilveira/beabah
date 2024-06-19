@@ -58,7 +58,7 @@ export function DeleteModules() {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.titulo}>Visualizar Módulos</h1>
+            <h1 className={styles.titulo}>Excluir Módulo</h1>
             <ul className={styles.listaModulos}>
                 {modules.map(module => (
                     <li key={module.id_modulo} className={styles.itemModulo}>
