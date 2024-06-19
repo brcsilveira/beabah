@@ -94,6 +94,10 @@ app.get('/transactions/:id', transacaoController.getTransactionById);
 app.put('/transactions/:id', transacaoController.updateTransaction);
 // Rota DELETE para deletar uma transação
 app.delete('/transactions/:id', transacaoController.deleteTransaction);
+// Rota para atribuir transações a um módulo
+app.post('/modules/:moduleId/transactions', moduloController.assignTransactionsToModule);
+// Rota para obter as transações atribuídas a um módulo
+app.get('/modules/:moduleId/transactions', moduloController.getAssignedTransactions);
 
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {

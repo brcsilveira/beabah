@@ -18,7 +18,7 @@ export function TransactionManagement() {
 
     return (
         <div className={styles.container}>
-            <Link  className={styles.gridItem}><span>Atribuir</span></Link >
+            <Link to='/selectModulesT' className={styles.gridItem}><span>Atribuir</span></Link >
             <Link  className={styles.gridItem}><span>Editar</span></Link >
             <Link to='/createTransaction' className={styles.gridItem}><span>Criar</span></Link >
             <Link  className={styles.gridItem}><span>Remover</span></Link >

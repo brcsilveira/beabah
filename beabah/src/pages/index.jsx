@@ -43,6 +43,7 @@ import { ViewFunctions } from './functionManagement/ViewFunctions'
 import { SelectUsers } from './userManagement/SelectUsers'
 import { EditProfile } from './profileManagement/EditProfile'
 import { ViewProfiles } from './profileManagement/ViewProfiles'
+import { AssignTransactions } from './transactionManagement/AssignTransactions'
 
 function Router() {
   return (
@@ -88,6 +89,7 @@ function Router() {
           <Route path="/selectUsers" element={<SelectUsers />} />
           <Route path="/editProfile/:profileId" element={<EditProfile />} />
           <Route path="/viewProfiles" element={<ViewProfiles />} />
+          <Route path="/assignTransactions/:moduleId" element={<AssignTransactions />} />
         </Route>
         <Route element={<ContainerNotLogged />}>
           <Route path="/registerNewPassword" element={<RegisterNewPassword />} />
