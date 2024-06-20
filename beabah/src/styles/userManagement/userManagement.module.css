@@ -66,7 +66,8 @@ span {
         margin: 120px auto;
     }
     .container .gridItem {
-        height: 60px;
+        height: 56px;
+        max-width: 300px;
         display: flex;
         background: var(--card2); 
         border-radius: 12px;

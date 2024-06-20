@@ -40,11 +40,6 @@ export function ViewUsers() {
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Visualizar Usuários</h1>
-            <div className={styles.titulosLista}>
-                <span className={styles.userDetailTitle}>Nome</span>
-                <span className={styles.userDetailTitle}>Email</span>
-                <span className={styles.userDetailTitle}>Perfil</span>
-            </div>
             <ul className={styles.listaUsuarios}>
                 {users.map(user => (
                     <li key={user.id_usuario}>
