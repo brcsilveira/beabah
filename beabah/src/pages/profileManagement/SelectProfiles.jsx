@@ -8,48 +8,25 @@ export function SelectProfiles () {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchProfilesWithModules = async () => {
+        const fetchProfiles = async () => {
             try {
                 const response = await fetch('http://localhost:3000/profiles');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                const profilesData = await response.json();
-                console.log('Profiles data:', profilesData);
-
-                // Fetch modules associated with each profile
-                const profilesWithModules = await Promise.all(profilesData.map(async (profile) => {
-                    const hasModules = await fetchProfileModules(profile.id_perfil);
-                    return { ...profile, hasModules };
-                }));
-
-                setProfiles(profilesWithModules);
+                const data = await response.json();
+                console.log('Perfis:', data);
+                setProfiles(data);
             } catch (error) {
                 setError('Erro ao buscar perfis');
                 console.error('Erro ao buscar perfis:', error);
             }
         }
 
-        fetchProfilesWithModules();
+        fetchProfiles();
     }, []);
 
-    const fetchProfileModules = async (profileId) => {
-        try {
-            const response = await fetch(`http://localhost:3000/profiles/${profileId}/modules`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            console.log('Modulos associados ao perfil:', data);
-            return data.length > 0; // Retorna true se há módulos associados, false caso contrário
-        } catch (error) {
-            setError('Erro ao buscar módulos associados ao perfil');
-            console.error('Erro ao buscar módulos associados ao perfil:', error);
-            return false;
-        }
-    }
-
-    const handleAssociate = (profileId) => {
+    const handleSelect = (profileId) => {
         navigate(`/associateModules/${profileId}`);
     }
 
@@ -66,13 +43,9 @@ export function SelectProfiles () {
                         <span className={styles.profileName}>{profile.nome_perfil}</span>
                         <button 
                             className={styles.selectButton} 
-                            onClick={() => handleAssociate(profile.id_perfil)}
-                            disabled={profile.hasModules}
-                            style={{ 
-                                backgroundColor: profile.hasModules ? 'gray' : '' 
-                            }}
+                            onClick={() => handleSelect(profile.id_perfil)}
                         >
-                            {profile.hasModules ? 'Associado' : 'Selecionar'}
+                            Selecionar
                         </button>  
                     </li>
                 ))}

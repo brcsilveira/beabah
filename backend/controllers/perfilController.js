@@ -3,58 +3,46 @@ const Modulo = require('../models/modulos');
 const PerfilModulo = require('../models/perfil_modulos');
 const Usuario = require('../models/usuarios');
 
-// Rota para associar um Perfil a Módulos
-exports.associateProfilesToModules = async (req, res) => {
+// Rota para obter os módulos associados a um perfil
+exports.getAssociateModules = async (req, res) => {
     try {
-        const { id_perfil, id_modulos } = req.body;
-
-        // Verifica se o perfil existe
-        const perfil = await Perfil.findByPk(id_perfil);
-        if (!perfil) {
-            return res.status(404).json({ error: 'Perfil não encontrado' });
-        }
-
-        // Verifica se os módulos existem
-        const modulos = await Modulo.findAll({ where: { id_modulo: id_modulos } });
-        if (modulos.length !== id_modulos.length) {
-            return res.status(404).json({ error: 'Um ou mais módulos não encontrados' });
-        }
-
-        // Associa o perfil aos módulos
-        const associacoes = id_modulos.map(id_modulo => ({ id_perfil, id_modulo }));
-        await PerfilModulo.bulkCreate(associacoes);
-
-        res.status(201).json({ message: 'Perfil associado aos módulos' });
+        const { profileId } = req.params;
+        const modules = await PerfilModulo.findAll({ where: { id_perfil: profileId } });
+        res.status(200).json(modules);
     } catch (error) {
-        console.error('Erro ao associar perfil a módulos:', error);
-        res.status(500).json({ error: 'Erro ao associar perfil a módulos' });
+        console.error('Erro ao obter módulos associados:', error);
+        res.status(500).json({ error: 'Erro ao obter módulos associados' });
     }
 };
 
-// Rota para obter os módulos associados a um perfil
-exports.getAssociateProfileModules = async (req, res) => {
+// Rota para associar um Perfil a Módulos
+exports.associateModulesToProfile = async (req, res) => {
     try {
-        const { id_perfil } = req.params;
+        const { profileId } = req.params;
+        const { modules } = req.body;
 
         // Verifica se o perfil existe
-        const perfil = await Perfil.findByPk(id_perfil);
-        if (!perfil) {
+        const profile = await Perfil.findByPk(profileId);
+        if (!profile) {
             return res.status(404).json({ error: 'Perfil não encontrado' });
         }
 
-        // Busca os módulos associados ao perfil
-        const modulos = await Modulo.findAll({
-            include: [{
-                model: Perfil,
-                where: { id_perfil },
-                through: { attributes: [] } // Omite os atributos da tabela de junção
-            }]
-        });
+        // Desassociar todas as transações existentes do perfil
+        await PerfilModulo.destroy({ where: { id_perfil: profileId } });
 
-        res.status(200).json(modulos);
+        // Associar os novos módulos
+        if (modules && modules.length > 0) {
+            const associacoes = modules.map(moduleId => ({
+                id_perfil: profileId,
+                id_modulo: moduleId
+            }));
+            await PerfilModulo.bulkCreate(associacoes);
+        }
+
+        res.status(200).json({ message: 'Módulos associados com sucesso' });
     } catch (error) {
-        console.error('Erro ao buscar módulos associados ao perfil:', error);
-        res.status(500).json({ error: 'Erro ao buscar módulos associados ao perfil' });
+        console.error('Erro ao associar módulos:', error);
+        res.status(500).json({ error: 'Erro ao associar módulos' });
     }
 };
 

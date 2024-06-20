@@ -2,6 +2,11 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
 const PerfilModulo = sequelize.define('perfil_modulos', {
+    id_associacao: {
+        type: DataTypes.BIGINT,
+        autoIncrement: true,
+        primaryKey: true
+    },
     id_perfil: {
         type: DataTypes.BIGINT,
         primaryKey: true,

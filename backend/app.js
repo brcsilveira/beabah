@@ -52,9 +52,9 @@ app.get('/profiles/:id', perfilController.getProfileById);
 // Rota PUT para atualizar um perfil
 app.put('/profiles/:id', perfilController.updateProfile);
 // Rota para associar um Perfil a Módulos
-app.post('/profiles/modules', perfilController.associateProfilesToModules);
+app.post('/profiles/:profileId/modules', perfilController.associateModulesToProfile);
 // Rota para obter os módulos associados a um perfil
-app.get('/profiles/:id_perfil/modules', perfilController.getAssociateProfileModules);
+app.get('/profiles/:profileId/modules', perfilController.getAssociateModules);
 // Rota DELETE para excluir um perfil
 app.delete('/profiles/:id', perfilController.deleteProfile);
 

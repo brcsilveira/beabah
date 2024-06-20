@@ -103,7 +103,7 @@ export function AssignTransactions() {
                             )
                         ))
                     ) : (
-                        <p>Nenhuma transação encontrada.</p>
+                            <p>Nenhuma transação encontrada.</p>
                     )}
                 </div>
                 <button className={styles.atribuir} type="submit">Atribuir</button>
