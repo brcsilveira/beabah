@@ -29,6 +29,9 @@ export function ViewUsers() {
 
     // Função para buscar detalhes do perfil pelo ID
     const fetchProfile = async (profileId) => {
+        if (profileId === null || profileId === undefined) {
+            return {};
+        }
         const response = await fetch(`http://localhost:3000/profiles/${profileId}`);
         const data = await response.json();
         return data;

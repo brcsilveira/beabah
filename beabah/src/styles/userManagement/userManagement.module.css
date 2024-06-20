@@ -57,21 +57,21 @@ span {
 }
 
 @media (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin: 120px auto;
+    }
     .container .gridItem {
-        width: 120px;
-        height: 120px;
+        height: 60px;
         display: flex;
         background: var(--card2); 
         border-radius: 12px;
     }
     .container .gridItem span {
         font-size: 1rem;
-    }
-    .container {
-        display: grid;
-        grid-template-columns: (2, 1fr);
-        max-width: 200px;
-        justify-content: center;
-        gap: 8px;
     }
 }
