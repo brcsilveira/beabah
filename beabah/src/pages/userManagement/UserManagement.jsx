@@ -19,6 +19,7 @@ export function UserManagement() {
 
     return (
         <div className={styles.container}>
+          <h1 className={styles.titulo}>Gestão de Usuários</h1>
           <Link to="/registerUser" className={styles.gridItem}>
             <span>Cadastrar</span>
           </Link>

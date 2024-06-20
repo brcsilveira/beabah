@@ -8,6 +8,10 @@
     gap: 16px;
 }
 
+.container .titulo {
+    display: none;
+}
+
 .container .gridItem {
     height: 208px;
     /* max-width: 220px; */
@@ -57,21 +61,29 @@ span {
 }
 
 @media (max-width: 600px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin: 120px auto;
+    }
+    .container .titulo {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 3rem;
+        font-size: 1.5rem;
+        color: var(--greenTitleAndViewProfiles);
+    }
     .container .gridItem {
-        width: 120px;
-        height: 120px;
+        height: 56px;
+        max-width: 300px;
         display: flex;
         background: var(--card2); 
         border-radius: 12px;
     }
     .container .gridItem span {
         font-size: 1rem;
-    }
-    .container {
-        display: grid;
-        grid-template-columns: (2, 1fr);
-        max-width: 200px;
-        justify-content: center;
-        gap: 8px;
     }
 }

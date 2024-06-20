@@ -65,6 +65,13 @@ span {
         gap: 8px;
         margin: 120px auto;
     }
+    .container .titulo {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 3rem;
+        font-size: 1.5rem;
+        color: var(--greenTitleAndViewProfiles);
+    }
     .container .gridItem {
         height: 56px;
         max-width: 300px;

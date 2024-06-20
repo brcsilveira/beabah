@@ -92,32 +92,26 @@
 }
 
 @media (max-width: 450px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        box-shadow: none;
-    }
-    .container .formularios {
-        display: flex;
-        flex-direction: column;
-    }
-    .container .formularios .formulario {
+    .formulario {
+        margin-top: 6rem;
         box-shadow: none;
         max-width: 22rem;
-        margin: 0;
     }
-    .container .formularios .formulario .opcoes label input {
-        font-size: 1.125rem;
+    .formulario input{
+        font-size: 1.25rem;
     }
-    .container .criar {
+    .formulario .criar {
         margin-top: 1rem;
         width: 12rem;
         font-size: 1.25rem;
         padding: 1rem;
     }
-    .container .titulo {
+    .formulario .titulo {
         font-size: 1.5rem;
         margin-top: 0px;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
+    }
+    .formulario .nomeUsuario {
+        font-size: 1.25rem;
     }
 }

@@ -18,6 +18,7 @@ export function ProfileManagement() {
 
     return (
         <div className={styles.container}>
+            <h1 className={styles.titulo}>Gestão de Perfis</h1>
             <Link to="/createProfilesTF" className={styles.gridItem}>
                 <span>Criar</span>
             </Link>
