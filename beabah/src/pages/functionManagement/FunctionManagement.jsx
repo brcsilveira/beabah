@@ -18,6 +18,7 @@ export function FunctionManagement() {
 
     return (
         <div className={styles.container}>
+            <h1 className={styles.titulo}>Gestão de Funções</h1>
             <Link to="/selectModulesF" className={styles.gridItem}><span>Criar</span></Link>
             <Link to="/editFunctions" className={styles.gridItem}><span>Editar</span></Link>
             <Link to="/viewFunctions" className={styles.gridItem}><span>Visualizar</span></Link>

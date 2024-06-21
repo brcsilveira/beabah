@@ -72,7 +72,7 @@
         max-width: 22rem;
     }
     .formulario button {
-        margin-top: 3rem;
+        margin-top: 2rem;
         width: 12rem;
         font-size: 1.25rem;
         padding: 1rem;
@@ -82,11 +82,14 @@
         margin-top: 0px;
         margin-bottom: 2.5rem;
     }
-    .formulario .nomesContainer .nomeModulo,
-    .formulario .nomesContainer .nomeFuncao {
+    .formulario .nomeModulo,
+    .formulario .nomeFuncao {
         font-size: 1.25rem;
     }
-    .formulario .descricaoContainer .descricao {
+    .formulario .nomeModulo::after {
+        width: 100%;
+    }
+    .formulario .descricao {
         font-size: 1.25rem;
     }
 }

@@ -66,21 +66,22 @@ span {
     }
 }
 
-@media (max-width: 600px) {
-    .container .gridItem {
-        border-radius: 8px;
-        height: 80px;
-        max-width: 300px;
-    }
-    .container .gridItem span {
-        font-size: 1rem;
-    }
+@media (max-width: 450px) {
     .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        margin-top: 6rem;
     }
-    .titulo {
+    .container .titulo {
+        margin-top: 0;
         font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .container .listaFuncoes li {
+        padding: 0.5rem 1rem;
+        margin: 10px auto;
+        max-width: 350px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .listaFuncoes li .functionName {
+        font-size: 1rem;
     }
 }

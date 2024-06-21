@@ -66,7 +66,7 @@ export function CreateFunction () {
     return (
         <main>
             <form onSubmit={handleSubmit} className={styles.formulario}>
-                <h1 className={styles.tituloFuncao}>Criar Função</h1>
+                <h1 className={styles.titulo}>Criar Função</h1>
                 <div className={styles.nomesContainer}>
                     <h2 className={styles.nomeModulo}>{module.nome_modulo} - {module.descricao}</h2>
                     <input 
