@@ -1,12 +1,19 @@
 import styles from './Header.module.css';
 import queroqueroLogo from '../assets/qq-logo.svg';
-import maleUser from '../assets/maleUser.svg';
-import { Outlet, Link, useLocation, useParams } from 'react-router-dom';
+import { Outlet, Link, useLocation, useParams, redirect, Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 
 
 export function Header() {
     const location = useLocation();
-    const { profileName } = useParams();
+    const auth = useContext(AuthContext);
+
+    console.log('Auth:', auth.token);
+
+    if (!auth.token) {
+        return <Navigate to="/login" />
+    }
 
     return (
         <>
@@ -58,8 +65,9 @@ export function Header() {
                 </ul>
                     </nav>
                     <div className={styles.user}>
-                        <img src={maleUser} alt="Foto do Usuário" />
-                        <p>Olá, Bruno</p> 
+                        {/* <img src={maleUser} alt="Foto do Usuário" /> */}
+                        <p>Olá, {auth.user.nome_usuario}</p> 
+                        <button type='button' onClick={auth.logout}>Sai</button>
                     </div>
                 </div>
             </header>

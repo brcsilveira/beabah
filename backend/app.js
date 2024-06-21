@@ -7,12 +7,12 @@ const perfilController = require('./controllers/perfilController');
 const moduloController = require('./controllers/moduloController');
 const funcaoController = require('./controllers/funcaoController');
 const transacaoController = require('./controllers/transacaoController');
+const jwt = require('jsonwebtoken')
 const app = express();
 const PORT = 3000;
 
 // Define associações
 require('./models/associacoes');
-
 
 app.use(cors({ origin: '*' })); // Feito pra acessar de qualquer lugar
 
@@ -27,6 +27,34 @@ app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'register.html'));
 });
 
+// Middleware de autenticação JWT
+const secret = 'patera88';
+
+const authenticateJWT = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
+
+        jwt.verify(token, secret, (err, user) => {
+            if (err) {
+                return res.status(403).json({ error: 'Token inválido' });
+            }
+
+            req.user = user;
+            next();
+        });
+    } else {
+        res.status(401).json({ error: 'Token não fornecido' });
+    }
+}
+
+// Rota para login de usuário
+app.post('/login', usuarioController.login);
+
+// Use este middleware nas rotas que você deseja proteger
+// app.use(authenticateJWT);
+
 //Usuário:
 // Rota POST para criar um novo usuário
 app.post('/users', usuarioController.createUser);
@@ -40,7 +68,6 @@ app.get('/users/:id', usuarioController.getUserById);
 app.put('/users/:id', usuarioController.updateUser);
 // Rota PUT para atualizar o perfil de um usuário
 app.put('/users/:id/profile', usuarioController.updateProfile);
-
 
 //Perfil:
 // Rota POST para criar um novo perfil

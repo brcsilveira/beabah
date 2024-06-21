@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db'); // Ajuste o caminho conforme necessário
+const sequelize = require('../config/db'); 
+const bcrypt = require('bcryptjs');
 
 // Define o modelo 'Usuario'
 const Usuario = sequelize.define('usuario', {
@@ -36,7 +37,17 @@ const Usuario = sequelize.define('usuario', {
     // Opções do modelo
     tableName: 'usuario',
     schema: 'beabah',
-    timestamps: true // Sequelize adiciona automaticamente os campos createdAt e updatedAt
+    timestamps: true,
+    hooks: {
+        beforeCreate: async (user) => {
+            user.senha = await bcrypt.hash(user.senha, 10);
+        },
+        beforeUpdate: async (user) => {
+            if (user.changed('senha')) {
+                user.senha = await bcrypt.hash(user.senha, 10);
+            }
+        }
+    }
 });
 
 // Exporta o modelo

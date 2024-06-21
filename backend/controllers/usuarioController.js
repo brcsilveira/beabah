@@ -1,4 +1,36 @@
 const Usuario = require('../models/usuarios');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+const secret = 'patera88';
+
+// Função para gerar um token JWT
+const generateToken = (user) => {
+    return jwt.sign({ id: user.id_usuario, codigo: user.codigo }, secret, { expiresIn: '1h' });
+};
+
+// Rota para login de usuário
+exports.login = async (req, res) => {
+    try {
+        const { codigo, senha } = req.body;
+        const user = await Usuario.findOne({ where: { codigo } });
+
+        if (!user) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+        }
+
+        const isPasswordValid = await bcrypt.compare(senha, user.senha);
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: 'Senha inválida' });
+        }
+
+        const token = generateToken(user);
+        res.status(200).json({ token, user });
+    } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        res.status(500).json({ error: 'Erro ao fazer login' });
+    }
+};
 
 // Rota POST para criar um novo usuário
 exports.createUser = async (req, res) => {
@@ -71,7 +103,9 @@ exports.updateUser = async (req, res) => {
 
         user.nome_usuario = nome_usuario;
         user.email = email;
-        user.senha = senha;
+        if (senha) {
+            user.senha = senha; // O hook beforeUpdate cuidará do hash
+        }
         await user.save();
         res.status(200).json(user);
     } catch (error) {

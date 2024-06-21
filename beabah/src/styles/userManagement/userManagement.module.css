@@ -8,6 +8,10 @@
     gap: 16px;
 }
 
+.container .titulo {
+    display: none;
+}
+
 .container .gridItem {
     height: 208px;
     /* max-width: 220px; */

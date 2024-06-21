@@ -1,17 +1,23 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/login/login.module.css'
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../context/authContext';
 
 export function Login() {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const auth = useContext(AuthContext);
 
-    const handleSubmit = (e) => {
+    console.log('Auth:', auth);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Simulação de lógica de autenticação
         console.log('User:', user);
         console.log('Password:', password);
+        await auth.login(user, password);
+        console.log('duasgdausd')
         // Redirecionar para userManagement após login bem-sucedido
         navigate('/userManagement');
     };
