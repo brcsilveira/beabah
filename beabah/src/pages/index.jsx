@@ -25,7 +25,6 @@ import { ProfileManagement } from './profileManagement/ProfileManagement'
 import { EditProfiles } from './profileManagement/EditProfiles'
 import { DeleteProfiles } from './profileManagement/DeleteProfiles'
 import { SelectProfiles } from './profileManagement/SelectProfiles'
-import { CreateModules } from './moduleManagement/CreateModules'
 import { EditModules } from './moduleManagement/EditModules'
 import { DeleteModules } from './moduleManagement/DeleteModules'
 import { ViewModules } from './moduleManagement/ViewModules'
@@ -70,7 +69,6 @@ function Router() {
           <Route path="/editProfiles" element={<EditProfiles />} />
           <Route path="/deleteProfiles" element={<DeleteProfiles />} />
           <Route path="/selectProfiles" element={<SelectProfiles />} />
-          <Route path="/createModules" element={<CreateModules />} />
           <Route path="/editModules" element={<EditModules />} />
           <Route path="/deleteModules" element={<DeleteModules />} />
           <Route path="/viewModules" element={<ViewModules />} />

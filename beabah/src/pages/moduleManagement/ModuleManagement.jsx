@@ -18,6 +18,7 @@ export function ModuleManagement() {
 
     return (
         <div className={styles.container}>
+            <h1 className={styles.titulo}>Gestão de Módulos</h1>
             <Link to="/createModule" className={styles.gridItem}><span>Criar</span></Link>
             <Link to="/editModules" className={styles.gridItem}><span>Editar</span></Link>
             <Link to="/viewModules" className={styles.gridItem}><span>Visualizar</span></Link>
