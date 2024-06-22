@@ -1,13 +1,17 @@
 import styles from './Header.module.css';
 import queroqueroLogo from '../assets/qq-logo.svg';
-import { Outlet, Link, useLocation, useParams, redirect, Navigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { Outlet, Link, useLocation, Navigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../context/authContext';
-
 
 export function Header() {
     const location = useLocation();
     const auth = useContext(AuthContext);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
+    }
 
     console.log('Auth:', auth.token);
 
@@ -65,9 +69,12 @@ export function Header() {
                 </ul>
                     </nav>
                     <div className={styles.user}>
-                        {/* <img src={maleUser} alt="Foto do Usuário" /> */}
-                        <p>Olá, {auth.user.nome_usuario}</p> 
-                        <button type='button' onClick={auth.logout}>Sai</button>
+                        <p onClick={toggleDropdown} className={styles.userName}>
+                            Olá, {auth.user.nome_usuario} <span className={`${styles.indicator} ${dropdownOpen ? styles.open : ''}`}>{dropdownOpen ? '˄' : '˅'}</span>
+                        </p>
+                        <div className={`${styles.dropdown} ${dropdownOpen ? styles.show : ''}`}>
+                            <button type='button' onClick={auth.logout}>Sair</button>
+                        </div>
                     </div>
                 </div>
             </header>
