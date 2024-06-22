@@ -84,9 +84,9 @@
         max-width: 22rem;
     }
     .formulario .opcoes label {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
     }
-    .formulario .vincular {
+    .formulario .atribuir {
         margin-top: 1rem;
         width: 12rem;
         font-size: 1.25rem;
@@ -95,9 +95,10 @@
     .formulario .titulo {
         font-size: 1.5rem;
         margin-top: 0px;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
-    .formulario .nomeUsuario {
+    .formulario .nomeUsuario,
+    .formulario .nomeModulo {
         font-size: 1.25rem;
     }
 }

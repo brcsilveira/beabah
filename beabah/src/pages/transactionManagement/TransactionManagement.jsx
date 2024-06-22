@@ -18,6 +18,7 @@ export function TransactionManagement() {
 
     return (
         <div className={styles.container}>
+            <h1 className={styles.titulo}>Gestão de Transações</h1>
             <Link to="/selectModulesT" className={styles.gridItem}><span>Atribuir</span></Link >
             <Link to="/editTransactions" className={styles.gridItem}><span>Editar</span></Link >
             <Link to="/createTransaction" className={styles.gridItem}><span>Criar</span></Link >

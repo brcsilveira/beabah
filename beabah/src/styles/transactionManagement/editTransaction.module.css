@@ -19,7 +19,7 @@
     margin: 2rem 0 1rem 0;
 }
 
-.formulario .nome {
+.formulario .nomeTransacao {
     width: 100%; /* Tornando os inputs responsivos */
     max-width: 300px; /* Definindo uma largura máxima para os inputs */
     padding: 10px;
@@ -28,7 +28,7 @@
     text-align: center;
 }
 
-.formulario .nome:focus {
+.formulario .nomeTransacao:focus {
     outline: none; /* Remover o outline padrão no foco */
 }
 
@@ -56,8 +56,8 @@
         box-shadow: none;
         max-width: 22rem;
     }
-    .formulario button {
-        margin-top: 3rem;
+    .formulario .atualizar {
+        margin-top: 1rem;
         width: 12rem;
         font-size: 1.25rem;
         padding: 1rem;
@@ -67,10 +67,10 @@
         margin-top: 0px;
         margin-bottom: 2.5rem;
     }
-    .formulario .nomeModulo {
+    .formulario .nomeTransacao {
         font-size: 1.25rem;
     }
-    .formulario .descricao {
+    .formulario div .descricao {
         font-size: 1.25rem;
     }
 }

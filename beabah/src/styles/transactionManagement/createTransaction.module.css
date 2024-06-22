@@ -69,7 +69,7 @@
         max-width: 22rem;
     }
     .formulario .criar {
-        margin-top: 3rem;
+        margin-top: 1rem;
         width: 12rem;
         font-size: 1.25rem;
         padding: 1rem;
@@ -79,10 +79,10 @@
         margin-top: 0px;
         margin-bottom: 2.5rem;
     }
-    .formulario .nomeModulo {
+    .formulario input {
         font-size: 1.25rem;
     }
-    .formulario .descricao {
+    .formulario div .descricao {
         font-size: 1.25rem;
     }
 }

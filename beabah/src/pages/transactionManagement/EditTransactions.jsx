@@ -30,7 +30,7 @@ export function EditTransactions() {
             <ul className={styles.listaTransacoes}>
                 {transactions.map(transaction => (
                     <li key={transaction.id_transacao}>
-                        <span>{transaction.nome_transacao} - {transaction.descricao}</span>
+                        <span className={styles.transactionName}>{transaction.nome_transacao} - {transaction.descricao}</span>
                         <button
                             className={styles.editButton}
                             onClick={() => handleEdit(transaction.id_transacao)}

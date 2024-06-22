@@ -81,7 +81,7 @@ export function EditTransaction () {
         <main>
             <form onSubmit={handleSubmit} className={styles.formulario}>
                 <h1 className={styles.titulo}>Editar Transação</h1>
-                <input type="text" id="nome" name="nome" value={formData.nome} className={styles.nome} required placeholder="Nome (Obrigatório)" onChange={handleNomeChange}/>
+                <input type="text" id="nome" name="nome" value={formData.nome} className={styles.nomeTransacao} required placeholder="Nome (Obrigatório)" onChange={handleNomeChange}/>
                 <div>
                     <h2 className={styles.descricao}>Descrição:</h2>
                     <textarea name="descricao" id="descricao" value={formData.descricao} placeholder="Opcional" onChange={handledescricaoChange}></textarea>
