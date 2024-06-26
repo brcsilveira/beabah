@@ -7,7 +7,7 @@
     max-width: 20rem;
     margin: 50px auto;
     border-radius: 32px;
-    gap: 3rem;
+    gap: 2.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
@@ -19,11 +19,19 @@
     margin: 2rem 0.125rem 0 0;
 }
 
-.formulario .dados input{
-    width: 100%; /* Tornando os inputs responsivos */
-    max-width: 300px; /* Definindo uma largura máxima para os inputs */
+.formulario .dados .usuario {
+    width: 100%; 
+    max-width: 300px; 
     padding: 10px;
     margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #19A851;
+}
+
+.formulario .dados .senha {
+    width: 100%; 
+    max-width: 300px; 
+    padding: 10px;
     border: none;
     border-bottom: 1px solid #19A851;
 }
@@ -59,6 +67,16 @@
 
 .formulario a.esqueceSenha:hover {
     text-decoration: underline;
+}
+
+.error {
+    color: red;
+    height: 0; 
+    visibility: hidden; /* Esconde a mensagem por padrão */
+}
+
+.error.visible {
+    visibility: visible; /* Torna a mensagem visível quando necessário */
 }
 
 @media (max-width: 450px) {

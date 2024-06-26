@@ -25,8 +25,8 @@ export function EditUser () {
                     ...prevState,
                     nome_usuario: data.nome_usuario || '',
                     email: data.email || '',
-                    senha: data.senha || '',
-                    confirmaSenha: data.senha || ''
+                    senha: '',
+                    confirmaSenha: ''
                 })
                 );
             } catch (error) {
@@ -84,7 +84,7 @@ export function EditUser () {
                     <input type="text" id="nome" name="nome_usuario" required placeholder="Alterar Nome" value={user.nome_usuario} onChange={handleChange} />
                     <input type="email" id="email" name="email" required placeholder="Alterar E-mail" value={user.email} onChange={handleChange} />
                     <input type="password" id="senha" name="senha" required placeholder="Alterar Senha" value={user.senha} onChange={handleChange} />
-                    <input type="password" id="confirmaSenha" name="confirmaSenha" required placeholder="Confirme a Senha" value={user.confirmaSenha} onChange={handleChange} />
+                    <input type="password" id="confirmaSenha" name="confirmaSenha" required placeholder="Confirme a Nova Senha" value={user.confirmaSenha} onChange={handleChange} />
                     {error && <p className={styles.error}>{error}</p>}
                 </div>
                 <button type='submit' className={styles.atualizar}>Atualizar</button>

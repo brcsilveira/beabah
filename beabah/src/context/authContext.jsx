@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', data.token);
         } else {
             console.error('Erro ao fazer login:', response);
+            throw new Error('Usuário ou senha incorretos');
         }
     }
 
