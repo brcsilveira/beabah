@@ -81,7 +81,7 @@ exports.resetPassword = async (req, res) => {
             return res.status(404).json({ error: 'Usuário não encontrado' });
         }
         user.senha = newPassword;
-        console.log('Nova senha:', user.senha);
+        // console.log('Nova senha:', user.senha);
         await user.save();
 
         res.status(200).json({ message: 'Senha alterada com sucesso' });

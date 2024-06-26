@@ -38,7 +38,7 @@ export function RegisterNewPassword() {
 
             if (response.ok) {
                 console.log('Senha alterada com sucesso');
-                navigate('/login');
+                navigate('/passwordReset');
             } else {
                 console.error('Erro ao alterar senha:', data.message || response.statusText);
                 setError(data.message || 'Erro ao alterar senha');

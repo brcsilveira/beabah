@@ -44,6 +44,7 @@ import { EditProfile } from './profileManagement/EditProfile'
 import { ViewProfiles } from './profileManagement/ViewProfiles'
 import { AssignTransactions } from './transactionManagement/AssignTransactions'
 import { EmailSent } from './login/EmailSent'
+import { PasswordReset } from './login/PasswordReset'
 
 function Router() {
   return (
@@ -95,6 +96,7 @@ function Router() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/login" element={<Login />} />
           <Route path="/emailSent" element={<EmailSent />} />
+          <Route path="/passwordReset" element={<PasswordReset />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Route>
       </Routes>
