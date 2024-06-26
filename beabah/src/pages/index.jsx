@@ -43,6 +43,7 @@ import { SelectUsers } from './userManagement/SelectUsers'
 import { EditProfile } from './profileManagement/EditProfile'
 import { ViewProfiles } from './profileManagement/ViewProfiles'
 import { AssignTransactions } from './transactionManagement/AssignTransactions'
+import { EmailSent } from './login/EmailSent'
 
 function Router() {
   return (
@@ -93,6 +94,7 @@ function Router() {
           <Route path="/registerNewPassword" element={<RegisterNewPassword />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/emailSent" element={<EmailSent />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Route>
       </Routes>

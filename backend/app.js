@@ -7,6 +7,7 @@ const perfilController = require('./controllers/perfilController');
 const moduloController = require('./controllers/moduloController');
 const funcaoController = require('./controllers/funcaoController');
 const transacaoController = require('./controllers/transacaoController');
+const passwordController = require('./controllers/passwordController');
 const jwt = require('jsonwebtoken')
 const app = express();
 const PORT = 3000;
@@ -126,6 +127,12 @@ app.post('/modules/:moduleId/transactions', moduloController.assignTransactionsT
 // Rota para obter as transações atribuídas a um módulo
 app.get('/modules/:moduleId/transactions', moduloController.getAssignedTransactions);
 
+// Rota para recuperação de senha
+app.post('/forgot-password', passwordController.forgotPassword);
+
+// Rota para redefinição de senha
+app.post('/registerNewPassword', passwordController.resetPassword);
+
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {
     res.redirect('/register');
@@ -134,7 +141,7 @@ app.get('/', (req, res) => {
 // Middleware para tratamento de erros
 app.use((err, req, res, next) => {
     console.error(err.stack); // Loga o erro no console
-    res.status(500).send('Algo deu errado!');
+    res.status(500).json({ error: 'Algo deu errado!', details: err.message });
 });
 
 // Inicia o servidor

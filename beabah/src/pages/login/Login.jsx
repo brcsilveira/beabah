@@ -17,7 +17,6 @@ export function Login() {
         console.log('User:', user);
         console.log('Password:', password);
         await auth.login(user, password);
-        console.log('duasgdausd')
         // Redirecionar para userManagement após login bem-sucedido
         navigate('/userManagement');
     };
