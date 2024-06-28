@@ -1,0 +1,5 @@
+# Arquivos
+*.csv
+
+# pycache
+python_services/__pycache__/

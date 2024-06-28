@@ -1,4 +1,0 @@
-id_usuario,nome_usuario,email,senha,id_perfil,codigo,created_at,updated_at
-28,Chim,contato.brunosilveira@gmail.com,$2a$10$iFWETnveyopMwAjXuUYvveQjU5sJ0Z2bFl5dYIHaTMza.z8TbsIR6,,82445,2024-06-26 00:33:06.584,2024-06-26 02:13:50.257
-22,Bruno Silveira,bruno11silveira@hotmail.com,$2a$10$T/hN0y3.bAem8pK3NbhHrOcK4Cq8zZQU1hbZrREQjZaM3b4ZJH5VC,14.0,2443,2024-06-21 21:58:07.612,2024-06-26 02:57:43.157
-18,Lucas Pedro,lucas@mail.com,$2a$10$lONiT8JvX5DtZu9wC7UspeGpU1azqBgebO5uIygINocXInGXppRXW,,12246,2024-06-21 13:32:54.121,2024-06-21 13:32:54.121
