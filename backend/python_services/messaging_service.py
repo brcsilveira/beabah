@@ -56,3 +56,4 @@ def send_reset_email():
 if __name__ == '__main__':
     app.run(port=5001, debug=True)
     
+# Comando de execução do serviço de mensagens: python messaging_service.py

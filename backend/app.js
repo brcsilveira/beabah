@@ -9,6 +9,7 @@ const funcaoController = require('./controllers/funcaoController');
 const transacaoController = require('./controllers/transacaoController');
 const passwordController = require('./controllers/passwordController');
 const reportController = require('./controllers/reportController');
+const dashboardController = require('./controllers/dashboardController');
 const jwt = require('jsonwebtoken')
 const app = express();
 const PORT = 3000;
@@ -136,6 +137,9 @@ app.post('/registerNewPassword', passwordController.resetPassword);
 
 // Rota para geração de relatórios
 app.post('/generateReports', reportController.generateReports);
+
+// Rota para obter os dados do dashboard
+app.get('/dashboardData', dashboardController.getDashboardData);
 
 // Rota raiz para direcionar para a página de registro
 app.get('/', (req, res) => {

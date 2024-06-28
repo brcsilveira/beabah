@@ -45,6 +45,7 @@ import { ViewProfiles } from './profileManagement/ViewProfiles'
 import { AssignTransactions } from './transactionManagement/AssignTransactions'
 import { EmailSent } from './login/EmailSent'
 import { PasswordReset } from './login/PasswordReset'
+import { Dashboard } from './dashboard/Dashboard'
 
 function Router() {
   return (
@@ -90,6 +91,7 @@ function Router() {
           <Route path="/editProfile/:profileId" element={<EditProfile />} />
           <Route path="/viewProfiles" element={<ViewProfiles />} />
           <Route path="/assignTransactions/:moduleId" element={<AssignTransactions />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route element={<ContainerNotLogged />}>
           <Route path="/registerNewPassword" element={<RegisterNewPassword />} />

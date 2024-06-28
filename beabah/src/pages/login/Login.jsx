@@ -18,7 +18,7 @@ export function Login() {
         try {
             await auth.login(user, password);
             // Redirecionar para userManagement após login bem-sucedido
-            navigate('/userManagement');
+            navigate('/dashboard');
         } catch (error) {
             setError('Usuário ou senha incorretos');
         }
