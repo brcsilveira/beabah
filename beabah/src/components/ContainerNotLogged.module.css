@@ -16,7 +16,8 @@
 }
 
 .footer {
-    display: none;
+    background-color: var(--greenBackgroundLoginAndHeader);
+    display: flex;
 }
 
 @media (max-width: 450px) {
@@ -31,8 +32,7 @@
         height: 7rem;
         margin: 0.5rem;
     }
-    .footer {
-        display: flex; 
+    .footer { 
         position: fixed;
         bottom: 0;
         width: 100%;
@@ -45,6 +45,7 @@
         padding: 0.625rem 0;
     }
     .footer p {
+        display: block;
         font-size: 0.75rem;
         font-weight: bold;
     }
