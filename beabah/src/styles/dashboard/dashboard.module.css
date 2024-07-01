@@ -63,3 +63,44 @@
     background-color: grey; /* Cor do botão inativo */
     cursor: not-allowed;
 }
+
+@media (max-width: 600px) { 
+    .dashboard {
+        margin: 90px auto;
+    }
+    .titulo {
+        display: block;
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 3rem;
+    }
+    .summary {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        margin: 32px;
+        gap: 1rem;
+    }
+    .summaryItem h2{
+        font-size: 1.125rem;
+    }
+    .chartItem {
+        margin-top: 1rem;
+        width: 75%;
+    }
+    .tituloGrafico {
+        font-size: 1.25rem;
+    }
+    .actions {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .downloadButton {
+        margin-top: 1rem;
+        width: 12rem;
+        font-size: 1.25rem;
+        padding: 1rem;
+    }
+}

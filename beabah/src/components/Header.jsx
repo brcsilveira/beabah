@@ -167,6 +167,9 @@ export function Header() {
                                     Transações
                                 </Link>
                             </li>
+                            <li>
+                                <img src={queroqueroLogo} alt="Logo Quero-Quero" />
+                            </li>
                         </ul>
                     </nav>
                 </>

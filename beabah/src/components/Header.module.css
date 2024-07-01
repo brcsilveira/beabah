@@ -149,8 +149,8 @@
   position: fixed;
   top: 0;
   left: -250px; /* Start off-screen */
-  width: 250px;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   background: var(--greenBackgroundLoginAndHeader);
   display: flex;
   flex-direction: column;
@@ -158,6 +158,7 @@
   padding-top: 1rem;
   transition: left 0.3s ease;
   z-index: 1000;
+  border-radius: 0 0 25px 0;
 }
 
 .navMobile.showMenu {
@@ -177,6 +178,11 @@
   font-size: 1.25rem;
   display: block;
   margin-bottom: 1.25rem;
+}
+
+.navListMobile img {
+  margin-top: 6rem;
+  width: 25%;
 }
 
 .header {
