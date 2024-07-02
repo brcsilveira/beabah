@@ -47,7 +47,7 @@ export function RegisterUser() {
                 body: JSON.stringify(data)
             });
                 
-            navigate('/userManagement', { state: { message: 'Usuário cadastrado!O código de acesso foi enviado para o email cadastrado.' } });
+            navigate('/userManagement', { state: { message: 'Usuário cadastrado!' } });
         } else {
             setErrors(validationErrors);
         }
