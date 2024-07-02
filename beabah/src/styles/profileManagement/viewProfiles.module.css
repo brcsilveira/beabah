@@ -30,6 +30,7 @@
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
+    text-align: center;
     transition: background-color 0.3s;
 }
 
@@ -61,7 +62,6 @@ span {
         padding: 0.5rem 1rem;
         margin: 10px auto;
         max-width: 350px;
-        grid-template-columns: 1fr 1fr;
     }
     .listaPerfis li .profileName {
         font-size: 1rem;

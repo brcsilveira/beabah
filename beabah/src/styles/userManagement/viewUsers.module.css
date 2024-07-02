@@ -70,8 +70,10 @@
     .listaUsuarios li .userName {
         font-size: 1rem;
     }
-    .listaUsuarios li .userEmail,
     .listaUsuarios li .userId {
+        font-size: 1rem;
+    }
+    .listaUsuarios li .userEmail{
         display: none;
     }
 }
