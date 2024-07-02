@@ -81,7 +81,7 @@ export function CreateModule() {
                     <h2 className={styles.descricao}>Descrição:</h2>
                     <textarea name="descricao" id="descricao" onChange={handleChange} placeholder="Opcional"></textarea>
                 </div>
-                <button type="submit">Criar</button>
+                <button className={styles.criar} type="submit">Criar</button>
             </form>
         </main>
     )

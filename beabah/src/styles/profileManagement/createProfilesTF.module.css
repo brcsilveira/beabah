@@ -72,7 +72,7 @@
     margin-right: 0.6rem;
 }
 
-.container .criar {
+.formulario .criar {
     width: 100%; /* Tornando o botão responsivo */
     max-width: 300px; /* Definindo uma largura máxima para o botão */
     padding: 10px;
@@ -85,6 +85,7 @@
     font-size: 1rem;
     font-weight: bold;
     grid-row: 3;
+    transition: background-color 0.3s;
 }
 
 .criar:hover {

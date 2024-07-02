@@ -59,6 +59,24 @@
     margin-right: 0.6rem;
 }
 
+.formulario .associar {
+    background-color: var(--greenButtonAndIconAndToast);
+    color: white;
+    border: none;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    justify-self: end;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.formulario .associar:hover {
+    background-color: #0a6b32;
+}
+
 @media (max-width: 450px) {
     .formulario {
         margin-top: 6rem;

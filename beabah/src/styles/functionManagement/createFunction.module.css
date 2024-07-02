@@ -11,7 +11,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
 
-.formulario .tituloFuncao {
+.formulario .titulo {
     color: var(--greenTitleAndViewProfiles);
     font-size: 1.25rem;
     font-weight: bold;
@@ -85,13 +85,32 @@
     color: red; /* Mensagem de erro visível */
 }
 
+.formulario .criar {
+    background-color: var(--greenButtonAndIconAndToast);
+    color: white;
+    border: none;
+    max-width: 300px;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.criar:hover {
+    background-color: var(--greenTitleAndViewProfiles);
+}
+
 @media (max-width: 450px) {
     .formulario {
         margin-top: 6rem;
         box-shadow: none;
         max-width: 22rem;
     }
-    .formulario button {
+    .formulario .criar {
         margin-top: 2rem;
         width: 12rem;
         font-size: 1.25rem;

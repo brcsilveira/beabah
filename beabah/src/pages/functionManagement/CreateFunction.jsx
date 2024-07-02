@@ -88,7 +88,7 @@ export function CreateFunction () {
                         placeholder="Opcional"
                     ></textarea>
                 </div>
-                <button type="submit">Criar</button>
+                <button className={styles.criar} type="submit">Criar</button>
             </form>
         </main>
     )

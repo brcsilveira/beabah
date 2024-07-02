@@ -55,7 +55,6 @@ textarea:focus {
 }
 
 button {
-    width: 100%; /* Tornando o botão responsivo */
     max-width: 300px; /* Definindo uma largura máxima para o botão */
     padding: 10px;
     margin: 0 auto; /* Centralizando o botão */

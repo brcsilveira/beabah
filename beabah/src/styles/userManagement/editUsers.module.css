@@ -59,6 +59,7 @@
     transition: background-color 0.3s;
     justify-self: end;
     margin: 0;
+    width: 100%;
 }
 
 .editButton:hover {
