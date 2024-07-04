@@ -7,6 +7,7 @@ export function DeleteTransactions() {
     const [transactions, setTransactions] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTransaction, setSelectedTransaction] = useState(null);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -56,15 +57,30 @@ export function DeleteTransactions() {
         }
     };
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredTransactions = transactions.filter(transaction =>
+        transaction.nome_transacao.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Excluir Transação</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar transação"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaTransacoes}>
-                {transactions.map(transaction => (
+                {filteredTransactions.map(transaction => (
                     <li key={transaction.id_transacao} className={styles.itemTransacao}>
                         <span className={styles.transactionName}>{transaction.nome_transacao} - {transaction.descricao}</span>
-                        <button 
-                            className={styles.deleteButton} 
+                        <button
+                            className={styles.deleteButton}
                             onClick={() => openModal(transaction)}
                         >
                             Excluir

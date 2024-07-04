@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export function ViewUsers() {
     const [users, setUsers] = useState([]);
     const [profiles, setProfiles] = useState({});
+    const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -37,15 +38,30 @@ export function ViewUsers() {
         return data;
     };
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredUsers = users.filter(user => 
+        user.nome_usuario.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Visualizar Usuários</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar usuário"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaUsuarios}>
-                {users.map(user => (
+                {filteredUsers.map(user => (
                     <li key={user.id_usuario}>
-                    <span className={styles.userName}>{user.nome_usuario}</span>
-                    <span className={styles.userEmail}>{user.email}</span>
-                    <span className={styles.userId}>{profiles[user.id_perfil]}</span>
+                        <span className={styles.userName}>{user.nome_usuario}</span>
+                        <span className={styles.userEmail}>{user.email}</span>
+                        <span className={styles.userId}>{profiles[user.id_perfil]}</span>
                     </li>
                 ))}
             </ul>

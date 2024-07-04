@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export function ViewProfiles() {
     const [profiles, setProfiles] = useState([]);
     const [error, setError] = useState(null);
+    const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
         const fetchProfiles = async () => {
@@ -28,11 +29,26 @@ export function ViewProfiles() {
         return <div>{error}</div>;
     }
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredProfiles = profiles.filter(profile =>
+        profile.nome_perfil.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Visualizar Perfis</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar perfil"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaPerfis}>
-                {profiles.map(profile => (
+                {filteredProfiles.map(profile => (
                     <li key={profile.id_perfil} className={styles.itemPerfil}>
                         <span className={styles.profileName}>{profile.nome_perfil}</span>
                     </li>

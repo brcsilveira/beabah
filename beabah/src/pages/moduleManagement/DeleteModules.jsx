@@ -7,6 +7,7 @@ export function DeleteModules() {
     const [modules, setModules] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedModule, setSelectedModule] = useState(null);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -56,15 +57,30 @@ export function DeleteModules() {
         }
     };
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredModules = modules.filter(module =>
+        module.nome_modulo.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Excluir Módulo</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar módulo"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaModulos}>
-                {modules.map(module => (
+                {filteredModules.map(module => (
                     <li key={module.id_modulo} className={styles.itemModulo}>
                         <span className={styles.moduleName}>{module.nome_modulo} - {module.descricao}</span>
-                        <button 
-                            className={styles.deleteButton} 
+                        <button
+                            className={styles.deleteButton}
                             onClick={() => openModal(module)}
                         >
                             Excluir

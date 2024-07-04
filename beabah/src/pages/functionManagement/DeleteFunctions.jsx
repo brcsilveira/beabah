@@ -7,6 +7,7 @@ export function DeleteFunctions() {
     const [functions, setFunctions] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFunction, setSelectedFunction] = useState(null);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -58,19 +59,34 @@ export function DeleteFunctions() {
         }
     };
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredFunctions = functions.filter(funcao =>
+        funcao.nome_funcao.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Excluir Funções</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar função"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaFuncoes}>
-                {functions.map(funcao => (
-                    <li key={funcao.id_funcao} className={styles.itemfuncao}>
+                {filteredFunctions.map(funcao => (
+                    <li key={funcao.id_funcao} className={styles.itemFuncao}>
                         <span className={styles.functionName}>{funcao.nome_funcao} - {funcao.descricao}</span>
-                        <button 
-                            className={styles.deleteButton} 
+                        <button
                             onClick={() => openModal(funcao)}
+                            className={styles.deleteButton}
                         >
                             Excluir
-                        </button>  
+                        </button>
                     </li>
                 ))}
             </ul>

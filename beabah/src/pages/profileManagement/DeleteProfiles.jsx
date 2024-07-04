@@ -7,6 +7,7 @@ export function DeleteProfiles () {
     const [profiles, setProfiles] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProfile, setSelectedProfile] = useState(null);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -56,11 +57,26 @@ export function DeleteProfiles () {
         }
     };
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredProfiles = profiles.filter(profile =>
+        profile.nome_perfil.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Excluir Perfil</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar perfil"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaPerfis}>
-                {profiles.map(profile => (
+                {filteredProfiles.map(profile => (
                     <li key={profile.id_perfil} className={styles.itemPerfil}>
                         <span className={styles.profileName}>{profile.nome_perfil}</span>
                         <button 
@@ -68,7 +84,7 @@ export function DeleteProfiles () {
                             onClick={() => openModal(profile)}
                         >
                             Excluir
-                        </button>  
+                        </button>
                     </li>
                 ))}
             </ul>

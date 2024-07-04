@@ -49,6 +49,20 @@ span {
     color: var(--greenTitleAndViewProfiles);
 }
 
+.searchInput {
+    width: 38%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--greenTitleAndViewProfiles);
+}
+
 @media (max-width: 450px) {
     .container {
         margin-top: 6rem;

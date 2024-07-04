@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     max-width: 960px;
     margin: 80px auto;
@@ -63,6 +64,20 @@
 
 .deleteButton:hover {
     background-color: #aa1217;
+}
+
+.searchInput {
+    width: 38%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--greenTitleAndViewProfiles);
 }
 
 @media (max-width: 450px) {

@@ -5,6 +5,7 @@ export function ViewFunctions() {
     const [functions, setFuncions] = useState([]);
     const [error, setError] = useState(null);
     const [modules, setModules] = useState({});
+    const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
         const fetchFunctions = async () => {
@@ -40,14 +41,29 @@ export function ViewFunctions() {
         return <div>{error}</div>;
     }
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredFunctions = functions.filter(funcao =>
+        funcao.nome_funcao.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Visualizar Funções</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar função"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaFuncoes}>
-                {functions.map(funcao => (
-                    <li key={funcao.id_funcao} className={styles.itemfuncao}>
+                {filteredFunctions.map(funcao => (
+                    <li key={funcao.id_funcao} className={styles.itemFuncao}>
                         <span className={styles.functionName}>{funcao.nome_funcao} - {funcao.descricao}</span>
-                        <span className={styles.functionModule}>{modules[funcao.id_modulo]?.nome_modulo || 'Módulo não encontrado'}</span>
+                        <span className={styles.moduleName}>{modules[funcao.id_modulo]?.nome_modulo}</span>
                     </li>
                 ))}
             </ul>

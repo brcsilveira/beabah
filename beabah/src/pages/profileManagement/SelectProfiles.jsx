@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export function SelectProfiles () {
     const [profiles, setProfiles] = useState([]);
     const [error, setError] = useState(null);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,19 +35,34 @@ export function SelectProfiles () {
         return <div>{error}</div>;
     }
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredProfiles = profiles.filter(profile =>
+        profile.nome_perfil.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Selecionar Perfil</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar perfil"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaPerfis}>
-                {profiles.map(profile => (
+                {filteredProfiles.map(profile => (
                     <li key={profile.id_perfil} className={styles.itemPerfil}>
                         <span className={styles.profileName}>{profile.nome_perfil}</span>
                         <button 
-                            className={styles.selectButton} 
                             onClick={() => handleSelect(profile.id_perfil)}
+                            className={styles.selectButton}
                         >
                             Selecionar
-                        </button>  
+                        </button>
                     </li>
                 ))}
             </ul>

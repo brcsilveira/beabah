@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export function SelectModulesF() {
     const [modules, setModules] = useState([]);
     const [error, setError] = useState(null);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,16 +35,31 @@ export function SelectModulesF() {
         return <div>{error}</div>;
     };
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredModules = modules.filter(modulo =>
+        modulo.nome_modulo.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Selecionar Módulo</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar módulo"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaModulos}>
-                {modules.map(module => (
-                    <li key={module.id_modulo} className={styles.itemModulo}>
-                        <span className={styles.moduleName}>{module.nome_modulo} - {module.descricao}</span>
+                {filteredModules.map(modulo => (
+                    <li key={modulo.id_modulo} className={styles.itemModulo}>
+                        <span className={styles.moduleName}>{modulo.nome_modulo} - {modulo.descricao}</span>
                         <button
                             className={styles.selectButton}
-                            onClick={() => handleSelect(module.id_modulo)}
+                            onClick={() => handleSelect(modulo.id_modulo)}
                         >
                             Selecionar
                         </button>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export function EditTransactions() {
     const [transactions, setTransactions] = useState([]);
+    const [searchText, setSearchText] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,12 +25,27 @@ export function EditTransactions() {
         navigate(`/editTransaction/${transactionId}`);
     }
 
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
+    };
+
+    const filteredTransactions = transactions.filter(transaction =>
+        transaction.nome_transacao.toLowerCase().includes(searchText.toLowerCase())
+    );
+
     return (
         <div className={styles.container}>
             <h1 className={styles.titulo}>Editar Transações</h1>
+            <input
+                type="text"
+                placeholder="Pesquisar transação"
+                value={searchText}
+                onChange={handleSearchChange}
+                className={styles.searchInput}
+            />
             <ul className={styles.listaTransacoes}>
-                {transactions.map(transaction => (
-                    <li key={transaction.id_transacao}>
+                {filteredTransactions.map(transaction => (
+                    <li key={transaction.id_transacao} className={styles.itemTransacao}>
                         <span className={styles.transactionName}>{transaction.nome_transacao} - {transaction.descricao}</span>
                         <button
                             className={styles.editButton}
